@@ -1,0 +1,11 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cairo Bank - Navy blue + gold, pyramid motif -->
+  <circle cx="100" cy="100" r="98" fill="#1B3A6B"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.12"/>
+  <!-- Stylized pyramid -->
+  <polygon points="100,38 145,92 55,92" fill="none" stroke="#D4A843" stroke-width="3.5" stroke-linejoin="round"/>
+  <polygon points="100,52 132,88 68,88" fill="#D4A843" opacity="0.15"/>
+  <!-- CB text -->
+  <text x="100" y="140" font-family="'Georgia','Times New Roman',serif" font-size="42" font-weight="bold" fill="#D4A843" text-anchor="middle">CB</text>
+  <line x1="68" y1="152" x2="132" y2="152" stroke="#D4A843" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+</svg>

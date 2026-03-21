@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Cairo:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #B22222;
+  --color-secondary: #DAA520;
+  --color-accent: #FFD700;
+  --color-dark: #1A1A2E;
+  --color-light: #F8F9FA;
+  --color-text-dark: #1A1A1A;
+  --color-text-muted: #666666;
+  --color-error: #DC2626;
+  --color-success: #16A34A;
+  --color-whatsapp: #25D366;
+  --color-primary-dark: #8B0000;
+  --font-sans: 'Inter', sans-serif;
+  --font-arabic: 'Cairo', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-dark);
+  background: #ffffff;
+}
+
+[dir="rtl"] body,
+[dir="rtl"] * {
+  font-family: var(--font-arabic);
+}
+
+[dir="rtl"] .font-inter {
+  font-family: var(--font-arabic);
+}
+
+/* Frosted glass utility classes */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-card-dark {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Section label pill (like Comatrol "ABOUT" pill) */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  border: 1px solid rgba(178, 34, 34, 0.3);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #B22222;
+}
+
+.section-label-light {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Image overlay card (like Comatrol divisions) */
+.image-overlay-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.image-overlay-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26, 26, 46, 0.9) 0%, rgba(26, 26, 46, 0.3) 60%, transparent 100%);
+  transition: background 0.3s ease;
+}
+
+.image-overlay-card:hover::after {
+  background: linear-gradient(to top, rgba(178, 34, 34, 0.85) 0%, rgba(26, 26, 46, 0.4) 60%, transparent 100%);
+}
+
+/* Circular accent icon (like Comatrol service icons) */
+.accent-circle-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background-color: #B22222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* Divider accent line (like Comatrol separator) */
+.accent-divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #B22222, transparent);
+  margin: 0.75rem 0;
+}
+
+[dir="rtl"] .accent-divider {
+  background: linear-gradient(to left, #B22222, transparent);
+}
+
+/* Bold stat number styling */
+.stat-number {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  color: white;
+}
+
+/* Arrow link button (like Comatrol) */
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.25rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: all 0.2s;
+}
+
+.arrow-link:hover {
+  gap: 1rem;
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Prevent text size adjustment on mobile */
+@supports (-webkit-touch-callout: none) {
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
