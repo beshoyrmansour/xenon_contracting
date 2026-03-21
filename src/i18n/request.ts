@@ -8,13 +8,13 @@ export default getRequestConfig(async () => {
   const localeCookie = cookieStore.get("locale")?.value;
   const acceptLanguage = headerStore.get("accept-language");
 
-  let locale = localeCookie || "en";
-  if (!localeCookie && acceptLanguage?.includes("ar")) {
-    locale = "ar";
+  let locale = localeCookie || "ar";
+  if (!localeCookie && acceptLanguage?.includes("en")) {
+    locale = "en";
   }
 
   if (!["en", "ar"].includes(locale)) {
-    locale = "en";
+    locale = "ar";
   }
 
   return {
