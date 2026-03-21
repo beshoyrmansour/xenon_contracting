@@ -199,12 +199,13 @@ export default async function RootLayout({
       dir={locale === "ar" ? "rtl" : "ltr"}
       className="h-full antialiased"
     >
-      <head>
-        {/* Preconnect for performance */}
+      <body className="min-h-full flex flex-col">
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
-        {/* Web App Manifest */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
         <link rel="manifest" href="/manifest.json" />
 
         {/* Structured Data — LocalBusiness */}
@@ -388,8 +389,6 @@ export default async function RootLayout({
             }),
           }}
         />
-      </head>
-      <body className="min-h-full flex flex-col">
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
