@@ -263,7 +263,14 @@ export default function ContactPage() {
                       <p className="font-medium text-text-dark">
                         {t("addressLabel")}
                       </p>
-                      <p className="text-sm text-text-muted">{t("address")}</p>
+                      <a
+                        href="https://maps.google.com/?q=30.115889,31.329802"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-primary hover:text-secondary transition-colors"
+                      >
+                        {t("address")}
+                      </a>
                     </div>
                   </div>
 
@@ -281,6 +288,14 @@ export default function ContactPage() {
                         dir="ltr"
                       >
                         01221715027
+                      </a>
+                      <br />
+                      <a
+                        href="tel:+201501548315"
+                        className="text-sm text-primary hover:text-secondary transition-colors"
+                        dir="ltr"
+                      >
+                        01501548315
                       </a>
                     </div>
                   </div>
@@ -354,7 +369,7 @@ export default function ContactPage() {
         <section className="bg-light">
           <iframe
             title="Xenon Trade & Contracting Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.5!2d31.24!3d30.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDA2JzAwLjAiTiAzMcKwMTQnMjQuMCJF!5e0!3m2!1sen!2seg!4v1600000000000!5m2!1sen!2seg"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.5!2d31.329802!3d30.115889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDA2JzU3LjIiTiAzMcKwMTknNDcuMyJF!5e0!3m2!1sen!2seg!4v1600000000000!5m2!1sen!2seg"
             width="100%"
             height="300"
             className="sm:h-[400px]"
@@ -374,18 +389,18 @@ export default function ContactPage() {
               </h2>
             </FadeInUp>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <a
-                href="tel:+201221715027"
-                className="flex flex-col items-center p-6 rounded-xl glass-card hover:shadow-lg hover:border-secondary border-2 border-transparent transition-all"
-              >
+              <div className="flex flex-col items-center p-6 rounded-xl glass-card hover:shadow-lg hover:border-secondary border-2 border-transparent transition-all">
                 <Phone className="w-8 h-8 text-primary mb-3" />
                 <span className="font-semibold text-text-dark">
                   {t("phoneLabel")}
                 </span>
-                <span className="text-sm text-text-muted" dir="ltr">
+                <a href="tel:+201221715027" className="text-sm text-text-muted hover:text-primary transition-colors" dir="ltr">
                   01221715027
-                </span>
-              </a>
+                </a>
+                <a href="tel:+201501548315" className="text-sm text-text-muted hover:text-primary transition-colors" dir="ltr">
+                  01501548315
+                </a>
+              </div>
               <a
                 href="https://wa.me/201221715027"
                 target="_blank"

@@ -74,9 +74,9 @@ export default function ServicesPage() {
         <PageHero title={t("title")} subtitle={t("pageSubtitle")} />
 
         {/* Sticky navigation tabs — modernized */}
-        <div className="sticky top-[52px] sm:top-[56px] z-30 bg-dark border-b border-white/10 shadow-lg">
-          <div className="max-w-full mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="flex gap-1 overflow-x-auto py-2 sm:py-2.5 scrollbar-hide -mx-2 px-2">
+        <div className="sticky top-[52px] sm:top-[56px] z-30 bg-white border-b border-gray-100 shadow-sm">
+          <div className="mx-auto px-4 sm:px-6 lg:px-8 overflow-x-auto scrollbar-hide">
+            <div className="flex gap-1 py-2 sm:py-2.5 w-max mx-auto">
               {services.map((service) => {
                 const Icon = service.icon;
                 const isActive = activeTab === service.key;
@@ -85,10 +85,10 @@ export default function ServicesPage() {
                     key={service.key}
                     href={`#${service.key}`}
                     onClick={() => setActiveTab(service.key)}
-                    className={`relative flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+                    className={`relative flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                       isActive
-                        ? "bg-primary text-white shadow-md"
-                        : "text-white/80 hover:text-white hover:bg-white/5"
+                        ? "bg-dark text-white shadow-md"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
                     }`}
                   >
                     <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />

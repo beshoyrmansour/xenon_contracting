@@ -132,8 +132,8 @@ export default function ProjectsPage() {
 
         {/* Filter Pills */}
         <section className="py-3 bg-white sticky top-[52px] sm:top-[56px] z-20 border-b border-gray-100 shadow-sm">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
+          <div className="mx-auto px-4 sm:px-6 lg:px-8 overflow-x-auto scrollbar-hide">
+            <div className="flex items-center justify-center gap-2 pb-1 w-max mx-auto">
               <button
                 onClick={() => handleFilter("all")}
                 className={`shrink-0 px-3.5 py-1.5 rounded-full text-sm font-medium transition-colors ${
@@ -316,11 +316,22 @@ export default function ProjectsPage() {
                       }`}
                     >
                       <MapPin className="w-5 h-5 mx-auto mb-3 text-[#B22222]" />
-                      <p className={`font-bold text-sm mb-1 ${isActive ? "text-white" : "text-[#1A1A2E]"}`}>
+                      <p
+                        className={`font-bold text-sm mb-1 ${isActive ? "text-white" : "text-[#1A1A2E]"}`}
+                      >
                         {locale === "ar" ? cityAr : city}
                       </p>
-                      <p className={`text-xs font-medium ${isActive ? "text-white/70" : "text-[#B22222]"}`}>
-                        {count} {count === 1 ? (locale === "ar" ? "مشروع" : "Project") : (locale === "ar" ? "مشروع" : "Projects")}
+                      <p
+                        className={`text-xs font-medium ${isActive ? "text-white/70" : "text-[#B22222]"}`}
+                      >
+                        {count}{" "}
+                        {count === 1
+                          ? locale === "ar"
+                            ? "مشروع"
+                            : "Project"
+                          : locale === "ar"
+                            ? "مشروع"
+                            : "Projects"}
                       </p>
                     </button>
                   );

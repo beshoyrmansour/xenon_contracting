@@ -94,7 +94,7 @@ export const metadata: Metadata = {
         type: "image/png",
       },
     ],
-    phoneNumbers: ["+201221715027"],
+    phoneNumbers: ["+201221715027", "+201501548315"],
     emails: ["eng.mina@xenon.com.eg", "sales@xenon.com.eg"],
     countryName: "Egypt",
   },
@@ -167,10 +167,10 @@ export const metadata: Metadata = {
     // Telegram
     "telegram:channel": "@xenoncontracting",
     // Business info
-    "business:contact_data:street_address": "28 A Refaat St., Road Elfarag",
+    "business:contact_data:street_address": "27 @ 28st. Alhelmeya, Gesr Elswis",
     "business:contact_data:locality": "Cairo",
     "business:contact_data:country_name": "Egypt",
-    "business:contact_data:phone_number": "+201221715027",
+    "business:contact_data:phone_number": "+201221715027, +201501548315",
     "business:contact_data:email": "eng.mina@xenon.com.eg",
     "business:contact_data:website": SITE_URL,
     // Pinterest
@@ -226,7 +226,7 @@ export default async function RootLayout({
                 height: 512,
               },
               image: `${SITE_URL}/og-image.png`,
-              telephone: "+201221715027",
+              telephone: ["+201221715027", "+201501548315"],
               email: "eng.mina@xenon.com.eg",
               foundingDate: "2012-02",
               founder: {
@@ -238,7 +238,7 @@ export default async function RootLayout({
                 "Leading Egyptian company specializing in fire alarm systems, sprinkler systems, CCTV, access control, and electrical contracting.",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "28 A Refaat St., Road Elfarag",
+                streetAddress: "27 @ 28st. Alhelmeya, behind Misr Elgadida Military Hospital, Gesr Elswis",
                 addressLocality: "Cairo",
                 addressRegion: "Cairo Governorate",
                 postalCode: "11441",
@@ -246,8 +246,8 @@ export default async function RootLayout({
               },
               geo: {
                 "@type": "GeoCoordinates",
-                latitude: 30.1,
-                longitude: 31.24,
+                latitude: 30.115889,
+                longitude: 31.329802,
               },
               openingHoursSpecification: [
                 {
@@ -340,7 +340,7 @@ export default async function RootLayout({
               logo: `${SITE_URL}/xenon-logo-512.png`,
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+201221715027",
+                telephone: ["+201221715027", "+201501548315"],
                 contactType: "customer service",
                 email: "eng.mina@xenon.com.eg",
                 availableLanguage: ["Arabic", "English"],

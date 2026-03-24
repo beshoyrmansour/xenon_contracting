@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact Us — Free Fire Safety Consultation",
   description:
-    "Contact Xenon Trade & Contracting for fire safety and security solutions. Call 01221715027, email eng.mina@xenon.com.eg, or visit us at 28 A Refaat St., Road Elfarag, Cairo. Free consultations available.",
+    "Contact Xenon Trade & Contracting for fire safety and security solutions. Call 01221715027 / 01501548315, email eng.mina@xenon.com.eg, or visit us at 27 @ 28st. Alhelmeya, Gesr Elswis, Cairo. Free consultations available.",
   keywords: [
     "contact Xenon Egypt", "fire safety quote Cairo", "free fire safety consultation",
     "security system installation quote", "fire alarm quote Egypt", "WhatsApp Xenon",

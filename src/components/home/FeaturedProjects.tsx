@@ -36,17 +36,73 @@ interface FeaturedProject {
 }
 
 const featured: FeaturedProject[] = [
-  { nameEn: "National Bank of Egypt", nameAr: "البنك الاهلي المصري", sector: "banking", location: "Minya", locationAr: "المنيا" },
-  { nameEn: "Police Hospital — Alexandria", nameAr: "مستشفى الشرطة", sector: "healthcare", location: "Alexandria", locationAr: "الإسكندرية" },
-  { nameEn: "Multex Egypt Factory", nameAr: "مصنع ميلتكس ايجيبت", sector: "industrial", location: "October City", locationAr: "أكتوبر" },
-  { nameEn: "Wadi Degla Club — Maadi", nameAr: "نادي وادي دجلة", sector: "sports", location: "Cairo", locationAr: "القاهرة" },
-  { nameEn: "Al-Imam Mall", nameAr: "مول الامام", sector: "commercial", location: "Cairo", locationAr: "القاهرة" },
-  { nameEn: "Nile Language School", nameAr: "مدرسة النيل للغات", sector: "education", location: "Cairo", locationAr: "القاهرة" },
-  { nameEn: "Cairo Bank", nameAr: "بنك القاهرة", sector: "banking", location: "Cairo", locationAr: "القاهرة" },
-  { nameEn: "Good Shepherd Hospital", nameAr: "مستشفى الراعي الصالح", sector: "healthcare", location: "Cairo", locationAr: "القاهرة" },
+  {
+    nameEn: "National Bank of Egypt",
+    nameAr: "البنك الاهلي المصري",
+    sector: "banking",
+    location: "Minya",
+    locationAr: "المنيا",
+  },
+  {
+    nameEn: "Police Hospital — Alexandria",
+    nameAr: "مستشفى الشرطة",
+    sector: "healthcare",
+    location: "Alexandria",
+    locationAr: "الإسكندرية",
+  },
+  {
+    nameEn: "Multex Egypt Factory",
+    nameAr: "مصنع ميلتكس ايجيبت",
+    sector: "industrial",
+    location: "October City",
+    locationAr: "أكتوبر",
+  },
+  {
+    nameEn: "Wadi Degla Club — Maadi",
+    nameAr: "نادي وادي دجلة",
+    sector: "sports",
+    location: "Cairo",
+    locationAr: "القاهرة",
+  },
+  {
+    nameEn: "Al-Imam Mall",
+    nameAr: "مول الامام",
+    sector: "commercial",
+    location: "Cairo",
+    locationAr: "القاهرة",
+  },
+  {
+    nameEn: "Nile Language School",
+    nameAr: "مدرسة النيل للغات",
+    sector: "education",
+    location: "Cairo",
+    locationAr: "القاهرة",
+  },
+  {
+    nameEn: "Cairo Bank",
+    nameAr: "بنك القاهرة",
+    sector: "banking",
+    location: "Cairo",
+    locationAr: "القاهرة",
+  },
+  {
+    nameEn: "Good Shepherd Hospital",
+    nameAr: "مستشفى الراعي الصالح",
+    sector: "healthcare",
+    location: "Cairo",
+    locationAr: "القاهرة",
+  },
 ];
 
-const sectors = ["all", "banking", "healthcare", "industrial", "sports", "commercial", "education"];
+const sectors = [
+  "all",
+  "banking",
+  "healthcare",
+  "industrial",
+  "sports",
+  "commercial",
+  "education",
+];
 
 const stats = [
   { value: "14+", labelKey: "years" },
@@ -76,7 +132,6 @@ export default function FeaturedProjects() {
       />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Header */}
         <FadeInUp className="text-center mb-16">
           <p className="text-primary font-semibold text-sm tracking-widest uppercase mb-3">
@@ -92,7 +147,9 @@ export default function FeaturedProjects() {
           <div className="grid grid-cols-4 gap-2 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-12 sm:gap-y-6 mb-16">
             {stats.map((s) => (
               <div key={s.labelKey} className="text-center">
-                <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark">{s.value}</span>
+                <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark">
+                  {s.value}
+                </span>
                 <p className="text-sm text-gray-500 mt-1">{ts(s.labelKey)}</p>
               </div>
             ))}
@@ -115,7 +172,9 @@ export default function FeaturedProjects() {
                   }`}
                 >
                   {sector === "all"
-                    ? locale === "ar" ? "الكل" : "All"
+                    ? locale === "ar"
+                      ? "الكل"
+                      : "All"
                     : t(sector)}
                 </button>
               );
