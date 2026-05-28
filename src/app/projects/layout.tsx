@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     description: "Explore our completed projects across banking, healthcare, industrial, sports, and commercial sectors in Cairo, Alexandria, and more.",
     url: "https://www.xenon.com.eg/projects",
     type: "website",
+    siteName: "Xenon Trade & Contracting",
+    locale: "en_EG",
+    alternateLocale: "ar_EG",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Xenon Projects Portfolio" }],
   },
   twitter: {
@@ -25,6 +28,18 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.xenon.com.eg/projects" },
 };
 
+const SITE_URL = "https://www.xenon.com.eg";
+
+const FLAGSHIP_PROJECTS = [
+  "National Bank of Egypt — Minya Branch",
+  "Cairo Bank",
+  "Alexandria Bank",
+  "Wadi Degla Clubs Company — Maadi",
+  "Police Hospital — Alexandria",
+  "Good Shepherd Hospital",
+  "Multex Egypt Factory",
+];
+
 export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -35,9 +50,34 @@ export default function ProjectsLayout({ children }: { children: React.ReactNode
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.xenon.com.eg" },
-              { "@type": "ListItem", position: 2, name: "Projects", item: "https://www.xenon.com.eg/projects" },
+              { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+              { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE_URL}/projects` },
             ],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id": `${SITE_URL}/projects#collection`,
+            name: "Fire Safety & Security Projects",
+            description:
+              "Portfolio of 150+ completed fire safety and security projects by Xenon Trade & Contracting across banking, healthcare, industrial, sports, education and commercial sectors in Egypt.",
+            url: `${SITE_URL}/projects`,
+            isPartOf: { "@id": `${SITE_URL}/#website` },
+            about: { "@id": `${SITE_URL}/#organization` },
+            mainEntity: {
+              "@type": "ItemList",
+              numberOfItems: 150,
+              itemListElement: FLAGSHIP_PROJECTS.map((name, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name,
+              })),
+            },
           }),
         }}
       />

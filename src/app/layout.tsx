@@ -139,11 +139,13 @@ export const metadata: Metadata = {
   },
 
   // Canonical & alternates
+  // NOTE: Arabic and English are served at the SAME URL via content negotiation
+  // (cookie/Accept-Language) — there is no separate /ar route. Declaring both
+  // languages against the canonical URL avoids broken hreflang to a 404 path.
   alternates: {
     canonical: SITE_URL,
     languages: {
-      "en-EG": SITE_URL,
-      "ar-EG": `${SITE_URL}/ar`,
+      "x-default": SITE_URL,
     },
   },
 

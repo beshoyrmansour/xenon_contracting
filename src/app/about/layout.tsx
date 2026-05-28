@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     description: "14+ years protecting Egypt's businesses. Certified fire safety and security solutions from design to 24/7 maintenance.",
     url: "https://www.xenon.com.eg/about",
     type: "website",
+    siteName: "Xenon Trade & Contracting",
+    locale: "en_EG",
+    alternateLocale: "ar_EG",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "About Xenon Trade & Contracting" }],
   },
   twitter: {

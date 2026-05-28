@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     description: "Get in touch for a free fire safety consultation. We respond within 2 hours during business hours. Call, WhatsApp, or fill out our form.",
     url: "https://www.xenon.com.eg/contact",
     type: "website",
+    siteName: "Xenon Trade & Contracting",
+    locale: "en_EG",
+    alternateLocale: "ar_EG",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Contact Xenon Trade & Contracting" }],
   },
   twitter: {

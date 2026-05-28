@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     description: "Authorized distributor for 20+ international fire safety and security brands including Honeywell, Hochiki, TYCO, and more.",
     url: "https://www.xenon.com.eg/partners",
     type: "website",
+    siteName: "Xenon Trade & Contracting",
+    locale: "en_EG",
+    alternateLocale: "ar_EG",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Xenon International Partners" }],
   },
   twitter: {
