@@ -291,7 +291,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        <div className="p-5 flex flex-col h-[calc(100%-65px)]">
+        <div className="p-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] flex flex-col h-[calc(100%-65px)] overflow-y-auto">
           {/* Nav links */}
           <nav className="flex-1 space-y-1 overflow-y-auto">
             {navLinks.map((link) => (
