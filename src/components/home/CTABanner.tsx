@@ -31,9 +31,12 @@ export default function CTABanner() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <FadeInUp>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-10 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
             {t("headline")}
           </h2>
+          <p className="text-lg sm:text-xl font-medium text-white/90 mb-10">
+            {t("slogan")}
+          </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
