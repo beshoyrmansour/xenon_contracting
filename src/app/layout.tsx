@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Xenon Trade & Contracting",
   },
   description:
-    "Leading Egyptian company specializing in fire alarm systems, sprinkler systems, CCTV, access control, and electrical contracting. 14+ years of experience, 50+ projects across banking, healthcare, industrial & commercial sectors.",
+    "Leading Egyptian company specializing in fire alarm systems, sprinkler systems, CCTV, access control, and electrical contracting. 14+ years of experience, 150+ projects across banking, healthcare, industrial & commercial sectors.",
   keywords: [
     "fire alarm Egypt",
     "sprinkler system Cairo",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Xenon Trade & Contracting | Fire Safety & Security Systems — Egypt",
     description:
-      "Integrated fire safety & security solutions. Fire alarms, sprinklers, CCTV, access control, gas suppression & electrical contracting. 14+ years, 50+ projects across Egypt.",
+      "Integrated fire safety & security solutions. Fire alarms, sprinklers, CCTV, access control, gas suppression & electrical contracting. 14+ years, 150+ projects across Egypt.",
     url: SITE_URL,
     siteName: SITE_NAME,
     type: "website",
@@ -104,7 +104,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Xenon Trade & Contracting | Fire Safety & Security — Egypt",
     description:
-      "Integrated fire safety & security solutions. 14+ years, 50+ projects. Fire alarms, sprinklers, CCTV, access control & more.",
+      "Integrated fire safety & security solutions. 14+ years, 150+ projects. Fire alarms, sprinklers, CCTV, access control & more.",
     images: ["/og-image.png"],
     creator: "@xenoncontracting",
     site: "@xenoncontracting",

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us — Fire Safety Experts Since 2012",
   description:
-    "Learn about Xenon Trade & Contracting — Egypt's trusted fire safety and security company. 14+ years of experience, 50+ projects, certified by international standards. Founded by Eng. Mina Wagdy.",
+    "Learn about Xenon Trade & Contracting — Egypt's trusted fire safety and security company. 14+ years of experience, 150+ projects, certified by international standards. Founded by Eng. Mina Wagdy.",
   keywords: [
     "Xenon Trade Contracting", "fire safety Egypt", "security company Cairo",
     "Eng Mina Wagdy", "IBC authorized distributor", "fire safety certifications Egypt",

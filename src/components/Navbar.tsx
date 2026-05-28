@@ -132,10 +132,10 @@ export default function Navbar() {
               <Image
                 src="/xenon-logo-256.png"
                 alt="Xenon Trade & Contracting"
-                width={256}
+                width={198}
                 height={256}
                 style={{ objectFit: "contain" }}
-                className={`transition-all duration-300 ${isScrolled ? "h-9 w-9" : "h-11 w-11"}`}
+                className={`w-auto transition-all duration-300 ${isScrolled ? "h-9 lg:h-12" : "h-11 lg:h-16"}`}
                 priority
               />
             </Link>
@@ -276,11 +276,11 @@ export default function Navbar() {
         {/* Drawer header */}
         <div className="flex items-center justify-between p-5 border-b border-gray-200">
           <Image
-            src="/xenon-logo-128.png"
+            src="/xenon-logo-256.png"
             alt="Xenon"
-            width={128}
-            height={128}
-            className="h-9 w-9"
+            width={198}
+            height={256}
+            className="h-11 w-auto"
           />
           <button
             onClick={() => setIsMobileOpen(false)}
@@ -312,6 +312,28 @@ export default function Navbar() {
               </Link>
             ))}
           </nav>
+
+          {/* Drawer footer — call & language */}
+          <div className="pt-4 mt-4 border-t border-gray-200 space-y-2">
+            <a
+              href="tel:+201221715027"
+              onClick={() => setIsMobileOpen(false)}
+              className="flex items-center justify-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-semibold text-base hover:bg-primary-dark transition-colors"
+            >
+              <Phone className="w-5 h-5" />
+              {t("callNow")}
+            </a>
+            <button
+              onClick={() => {
+                setIsMobileOpen(false);
+                handleLocaleSwitch();
+              }}
+              className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-xl font-medium text-base text-text-dark border border-gray-200 hover:bg-gray-50 transition-colors"
+            >
+              <Globe className="w-5 h-5" />
+              {t("language")}
+            </button>
+          </div>
         </div>
       </div>
     </>

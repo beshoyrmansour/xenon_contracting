@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Xenon Trade & Contracting | Fire Safety & Security Systems — Egypt",
-    "description": "Leading Egyptian company specializing in fire alarm systems, sprinkler systems, CCTV, access control, and electrical contracting. 14+ years of experience, 50+ projects."
+    "description": "Leading Egyptian company specializing in fire alarm systems, sprinkler systems, CCTV, access control, and electrical contracting. 14+ years of experience, 150+ projects."
   },
   "nav": {
     "home": "Home",
@@ -14,12 +14,13 @@
     "language": "عربي"
   },
   "hero": {
+    "slogan": "Your Trusted Partner in Fire Safety & Security Solutions",
     "headline": "Integrated Fire Safety & Security Solutions",
     "subheadline": "Protecting Egypt's businesses since 2012 — from design to installation to 24/7 support",
     "cta1": "Schedule Free Consultation",
     "cta2": "View Our Projects",
     "trustYears": "14+ Years",
-    "trustProjects": "50+ Projects",
+    "trustProjects": "150+ Projects",
     "trustBrands": "20+ Partner Brands"
   },
   "services": {
@@ -88,7 +89,7 @@
   },
   "portfolio": {
     "title": "Our Portfolio",
-    "subtitle": "50+ projects across Egypt's most demanding sectors",
+    "subtitle": "150+ projects across Egypt's most demanding sectors",
     "viewAll": "View All Projects",
     "all": "All",
     "banking": "Banking & Finance",
@@ -170,7 +171,7 @@
     "t2018": "IBC authorized distributor partnership established",
     "t2020": "Expansion to Alexandria — Police Hospital, Al-Najjar Clinics",
     "t2022": "Electronic invoice registration and customs clearance certification",
-    "t2024": "50+ projects milestone achieved",
+    "t2024": "150+ projects milestone achieved",
     "valuesTitle": "Our Values",
     "quality": "Quality",
     "qualityDesc": "We deliver excellence in every project through meticulous attention to detail and premium materials",
@@ -183,7 +184,7 @@
     "leadershipTitle": "Leadership",
     "founderName": "Eng. Mina Wagdy Wadee Ibrahim",
     "founderRole": "Managing Engineer & Founder",
-    "founderBio": "With a strong background in engineering, Eng. Mina Wagdy founded Xenon Trade & Contracting in 2012 with a vision to elevate fire safety and security standards across Egypt. Under his leadership, the company has grown to complete 50+ projects across banking, healthcare, industrial, and commercial sectors.",
+    "founderBio": "With a strong background in engineering, Eng. Mina Wagdy founded Xenon Trade & Contracting in 2012 with a vision to elevate fire safety and security standards across Egypt. Under his leadership, the company has grown to complete 150+ projects across banking, healthcare, industrial, and commercial sectors.",
     "certificationsTitle": "Certifications & Registration",
     "taxReg": "Tax Registration Card",
     "commercialReg": "Commercial Registration",

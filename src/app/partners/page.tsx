@@ -171,8 +171,8 @@ export default function PartnersPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {brandCategories.map((cat, catIdx) => (
               <FadeInUp key={cat.key} delay={catIdx * 0.05}>
-                <div className="mb-12 last:mb-0">
-                  <h3 className="text-xl font-bold text-text-dark mb-6 flex items-center gap-2">
+                <div className="mb-16 sm:mb-20 last:mb-0">
+                  <h3 className="text-xl font-bold text-text-dark mb-8 flex items-center gap-2">
                     <span className="w-1.5 h-6 bg-secondary rounded-full" />
                     {t(cat.key)}
                   </h3>

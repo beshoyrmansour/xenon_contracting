@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import {
   Landmark,
@@ -10,9 +11,9 @@ import {
   Trophy,
   GraduationCap,
   ShoppingBag,
+  Car,
   MapPin,
   ArrowRight,
-  Building2,
   Download,
 } from "lucide-react";
 import { FadeInUp } from "@/components/ScrollReveal";
@@ -25,6 +26,7 @@ const sectorIcons: Record<string, typeof Landmark> = {
   sports: Trophy,
   education: GraduationCap,
   commercial: ShoppingBag,
+  automotive: Car,
 };
 
 interface FeaturedProject {
@@ -33,6 +35,7 @@ interface FeaturedProject {
   sector: string;
   location: string;
   locationAr: string;
+  logo?: string;
 }
 
 const featured: FeaturedProject[] = [
@@ -42,48 +45,31 @@ const featured: FeaturedProject[] = [
     sector: "banking",
     location: "Minya",
     locationAr: "المنيا",
+    logo: "/clients/og/nbe.png",
   },
   {
-    nameEn: "Police Hospital — Alexandria",
-    nameAr: "مستشفى الشرطة",
-    sector: "healthcare",
-    location: "Alexandria",
-    locationAr: "الإسكندرية",
-  },
-  {
-    nameEn: "Multex Egypt Factory",
-    nameAr: "مصنع ميلتكس ايجيبت",
-    sector: "industrial",
-    location: "October City",
-    locationAr: "أكتوبر",
-  },
-  {
-    nameEn: "Wadi Degla Club — Maadi",
-    nameAr: "نادي وادي دجلة",
-    sector: "sports",
-    location: "Cairo",
-    locationAr: "القاهرة",
-  },
-  {
-    nameEn: "Al-Imam Mall",
-    nameAr: "مول الامام",
-    sector: "commercial",
-    location: "Cairo",
-    locationAr: "القاهرة",
-  },
-  {
-    nameEn: "Nile Language School",
-    nameAr: "مدرسة النيل للغات",
-    sector: "education",
-    location: "Cairo",
-    locationAr: "القاهرة",
-  },
-  {
-    nameEn: "Cairo Bank",
+    nameEn: "Banque du Caire",
     nameAr: "بنك القاهرة",
     sector: "banking",
     location: "Cairo",
     locationAr: "القاهرة",
+    logo: "/clients/og/banque-du-caire.png",
+  },
+  {
+    nameEn: "ALEXBANK",
+    nameAr: "بنك الإسكندرية",
+    sector: "banking",
+    location: "Alexandria",
+    locationAr: "الإسكندرية",
+    logo: "/clients/og/alexbank.png",
+  },
+  {
+    nameEn: "Ahli United Bank",
+    nameAr: "البنك الأهلي المتحد",
+    sector: "banking",
+    location: "Cairo",
+    locationAr: "القاهرة",
+    logo: "/clients/og/ahli-united-bank.png",
   },
   {
     nameEn: "Good Shepherd Hospital",
@@ -91,6 +77,39 @@ const featured: FeaturedProject[] = [
     sector: "healthcare",
     location: "Cairo",
     locationAr: "القاهرة",
+    logo: "/clients/og/good-shepherd.png",
+  },
+  {
+    nameEn: "Police Hospital — Alexandria",
+    nameAr: "مستشفى الشرطة",
+    sector: "healthcare",
+    location: "Alexandria",
+    locationAr: "الإسكندرية",
+    logo: "/clients/og/police-hospital.png",
+  },
+  {
+    nameEn: "Milteks Textile Egypt",
+    nameAr: "مصنع ميلتكس ايجيبت",
+    sector: "industrial",
+    location: "October City",
+    locationAr: "أكتوبر",
+    logo: "/clients/og/milteks.png",
+  },
+  {
+    nameEn: "Wadi Degla Club",
+    nameAr: "نادي وادي دجلة",
+    sector: "sports",
+    location: "Cairo",
+    locationAr: "القاهرة",
+    logo: "/clients/og/wadi-degla.png",
+  },
+  {
+    nameEn: "BYD Car Service Center",
+    nameAr: "مركز خدمة سيارات BYD",
+    sector: "automotive",
+    location: "Cairo",
+    locationAr: "القاهرة",
+    logo: "/clients/og/BYD.png",
   },
 ];
 
@@ -100,13 +119,12 @@ const sectors = [
   "healthcare",
   "industrial",
   "sports",
-  "commercial",
-  "education",
+  "automotive",
 ];
 
 const stats = [
   { value: "14+", labelKey: "years" },
-  { value: "50+", labelKey: "projects" },
+  { value: "150+", labelKey: "projects" },
   { value: "10", labelKey: "disciplines" },
   { value: "20+", labelKey: "brands" },
 ];
@@ -183,26 +201,43 @@ export default function FeaturedProjects() {
         </FadeInUp>
 
         {/* Project list — clean cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
           {filtered.map((project, idx) => {
             const Icon = sectorIcons[project.sector] || Factory;
             return (
               <FadeInUp key={`${project.nameEn}-${idx}`} delay={idx * 0.04}>
-                <div className="group bg-white rounded-xl p-5 border border-gray-100 hover:border-primary/20 hover:shadow-md transition-all duration-200">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-8 h-8 rounded-lg bg-primary/8 flex items-center justify-center">
-                      <Icon className="w-4 h-4 text-primary" />
-                    </div>
-                    <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">
-                      {t(project.sector)}
-                    </span>
+                <div className="group h-full flex flex-col bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-primary/30 hover:shadow-xl hover:shadow-gray-200/60 hover:-translate-y-1 transition-all duration-300">
+                  <div className="h-32 flex items-center justify-center px-6 bg-linear-to-b from-gray-50/80 to-white border-b border-gray-100">
+                    {project.logo ? (
+                      <Image
+                        src={project.logo}
+                        alt={locale === "ar" ? project.nameAr : project.nameEn}
+                        width={220}
+                        height={88}
+                        className="max-h-20 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-16 h-16 rounded-2xl bg-primary/8 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                        <Icon className="w-8 h-8 text-primary" />
+                      </div>
+                    )}
                   </div>
-                  <h3 className="font-semibold text-dark text-[15px] leading-snug mb-2">
-                    {locale === "ar" ? project.nameAr : project.nameEn}
-                  </h3>
-                  <div className="flex items-center gap-1 text-gray-400 text-xs">
-                    <MapPin className="w-3 h-3" />
-                    {locale === "ar" ? project.locationAr : project.location}
+                  <div className="flex flex-col flex-1 p-5">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-7 h-7 rounded-lg bg-primary/8 flex items-center justify-center shrink-0">
+                        <Icon className="w-3.5 h-3.5 text-primary" />
+                      </div>
+                      <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">
+                        {t(project.sector)}
+                      </span>
+                    </div>
+                    <h3 className="font-semibold text-dark text-base leading-snug mb-2">
+                      {locale === "ar" ? project.nameAr : project.nameEn}
+                    </h3>
+                    <div className="flex items-center gap-1 text-gray-400 text-xs mt-auto">
+                      <MapPin className="w-3 h-3 shrink-0" />
+                      {locale === "ar" ? project.locationAr : project.location}
+                    </div>
                   </div>
                 </div>
               </FadeInUp>

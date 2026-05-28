@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import LogoWatermark from "@/components/LogoWatermark";
@@ -24,12 +25,13 @@ export default function HeroSection() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-32 sm:py-40">
-        <div className="max-w-2xl">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-16">
+          <div className="max-w-2xl">
           {/* Tag line */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
             className="text-primary font-semibold text-sm tracking-widest uppercase mb-5"
           >
             Fire Safety &bull; Security &bull; Electrical
@@ -44,6 +46,16 @@ export default function HeroSection() {
           >
             {t("headline")}
           </motion.h1>
+
+          {/* Slogan */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-lg sm:text-xl font-medium text-white/90 mb-6"
+          >
+            {t("slogan")}
+          </motion.p>
 
           {/* Subheadline */}
           <motion.p
@@ -86,7 +98,7 @@ export default function HeroSection() {
           >
             {[
               { value: "14+", label: "Years" },
-              { value: "50+", label: "Projects" },
+              { value: "150+", label: "Projects" },
               { value: "20+", label: "Brands" },
             ].map((stat, i) => (
               <div key={i} className="text-left">
@@ -98,6 +110,24 @@ export default function HeroSection() {
                 </span>
               </div>
             ))}
+          </motion.div>
+          </div>
+
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="shrink-0 flex justify-center lg:block lg:ms-auto"
+          >
+            <Image
+              src="/xenon-logo-white-full.png"
+              alt="Xenon Trade & Contracting"
+              width={939}
+              height={1212}
+              className="h-56 sm:h-72 lg:h-96 w-auto"
+              priority
+            />
           </motion.div>
         </div>
       </div>

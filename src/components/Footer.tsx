@@ -20,6 +20,7 @@ export default function Footer() {
   const t = useTranslations("footer");
   const nav = useTranslations("nav");
   const services = useTranslations("services");
+  const contact = useTranslations("contact");
 
   const quickLinks = [
     { href: "/", label: nav("home") },
@@ -59,12 +60,12 @@ export default function Footer() {
           {/* Column 1: Logo & Info */}
           <div>
             <Image
-              src="/xenon-logo-128.png"
+              src="/xenon-logo-256.png"
               alt="Xenon Trade & Contracting"
-              width={128}
-              height={128}
+              width={198}
+              height={256}
               style={{ objectFit: "contain" }}
-              className="h-12 w-12 mb-4"
+              className="h-12 w-auto mb-4"
             />
             <p className="text-text-muted text-sm leading-relaxed mb-4">
               {t("tagline")}
@@ -132,7 +133,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-sm text-text-muted hover:text-primary transition-colors"
                 >
-                  27 @ 28st. Alhelmeya, behind Misr Elgadida Military Hospital, Gesr Elswis, Cairo
+                  {contact("address")}
                 </a>
               </div>
               <div className="flex items-center gap-3">

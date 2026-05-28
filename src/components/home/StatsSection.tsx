@@ -6,7 +6,7 @@ import { FadeInUp } from "@/components/ScrollReveal";
 
 const stats = [
   { target: 14, suffix: "+", key: "years" },
-  { target: 50, suffix: "+", key: "projects" },
+  { target: 150, suffix: "+", key: "projects" },
   { target: 10, suffix: "", key: "disciplines" },
   { target: 20, suffix: "+", key: "brands" },
 ];
