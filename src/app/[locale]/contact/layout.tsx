@@ -1,34 +1,57 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import {
+  SITE_NAME,
+  localizedUrl,
+  alternates,
+  ogLocale,
+  ogAltLocale,
+} from "@/i18n/seo";
 
-export const metadata: Metadata = {
-  title: "Contact Us — Free Fire Safety Consultation",
-  description:
-    "Contact Xenon Trade & Contracting for fire safety and security solutions. Call 01221715027 / 01501548315, email eng.mina@xenon.com.eg, or visit us at 27 @ 28st. Alhelmeya, Gesr Elswis, Cairo. Free consultations available.",
-  keywords: [
-    "contact Xenon Egypt", "fire safety quote Cairo", "free fire safety consultation",
-    "security system installation quote", "fire alarm quote Egypt", "WhatsApp Xenon",
-    "اتصل بنا زينون", "استشارة مجانية سلامة حريق",
-  ],
-  openGraph: {
-    title: "Contact Xenon Trade & Contracting — Free Consultation",
-    description: "Get in touch for a free fire safety consultation. We respond within 2 hours during business hours. Call, WhatsApp, or fill out our form.",
-    url: "https://www.xenon.com.eg/contact",
-    type: "website",
-    siteName: "Xenon Trade & Contracting",
-    locale: "en_EG",
-    alternateLocale: "ar_EG",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Contact Xenon Trade & Contracting" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Contact Xenon — Free Fire Safety Consultation",
-    description: "Free fire safety consultation. We respond within 2 hours. Call, WhatsApp, or use our form.",
-    images: ["/og-image.png"],
-  },
-  alternates: { canonical: "https://www.xenon.com.eg/contact" },
-};
+const PATH = "/contact";
 
-export default function ContactLayout({ children }: { children: React.ReactNode }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pageMeta.contact" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: alternates(locale, PATH),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: localizedUrl(locale, PATH),
+      siteName: SITE_NAME,
+      type: "website",
+      locale: ogLocale(locale),
+      alternateLocale: ogAltLocale(locale),
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: t("title") }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["/og-image.png"],
+    },
+  };
+}
+
+export default async function ContactLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "nav" });
+
   return (
     <>
       <script
@@ -38,8 +61,8 @@ export default function ContactLayout({ children }: { children: React.ReactNode 
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.xenon.com.eg" },
-              { "@type": "ListItem", position: 2, name: "Contact", item: "https://www.xenon.com.eg/contact" },
+              { "@type": "ListItem", position: 1, name: t("home"), item: localizedUrl(locale) },
+              { "@type": "ListItem", position: 2, name: t("contact"), item: localizedUrl(locale, PATH) },
             ],
           }),
         }}

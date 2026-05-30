@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import {
   Phone,
   Menu,
@@ -23,8 +22,6 @@ import {
   Lock,
   BellRing,
 } from "lucide-react";
-import { setLocale } from "@/app/actions";
-import { useRouter } from "next/navigation";
 
 const serviceIcons = [
   { key: "electrical", icon: Zap },
@@ -63,10 +60,11 @@ export default function Navbar() {
     };
   }, [isMobileOpen]);
 
-  const handleLocaleSwitch = async () => {
+  const handleLocaleSwitch = () => {
     const newLocale = locale === "en" ? "ar" : "en";
-    await setLocale(newLocale);
-    router.refresh();
+    // Navigate to the same page in the other locale. next-intl rewrites the
+    // URL (e.g. /services ⇄ /en/services) and persists the NEXT_LOCALE cookie.
+    router.replace(pathname, { locale: newLocale });
   };
 
   const navLinks = [

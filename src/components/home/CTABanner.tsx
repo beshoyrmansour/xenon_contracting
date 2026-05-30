@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Phone, ArrowUpRight } from "lucide-react";
 import { FadeInUp } from "@/components/ScrollReveal";
 import LogoWatermark from "@/components/LogoWatermark";

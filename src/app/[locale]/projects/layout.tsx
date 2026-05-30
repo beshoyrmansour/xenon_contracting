@@ -1,34 +1,15 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import {
+  SITE_URL,
+  SITE_NAME,
+  localizedUrl,
+  alternates,
+  ogLocale,
+  ogAltLocale,
+} from "@/i18n/seo";
 
-export const metadata: Metadata = {
-  title: "Our Projects — 150+ Fire Safety Projects Across Egypt",
-  description:
-    "View Xenon's portfolio of 150+ completed fire safety and security projects across Egypt. Banking, healthcare, industrial, sports, education, and commercial sectors including National Bank of Egypt, Wadi Degla Clubs, and major factories.",
-  keywords: [
-    "fire safety projects Egypt", "security installations Cairo", "fire alarm installation bank",
-    "sprinkler system factory", "CCTV hospital Egypt", "Wadi Degla fire safety",
-    "National Bank Egypt security", "سابقة اعمال زينون", "مشاريع سلامة حريق مصر",
-  ],
-  openGraph: {
-    title: "150+ Fire Safety & Security Projects | Xenon Trade & Contracting",
-    description: "Explore our completed projects across banking, healthcare, industrial, sports, and commercial sectors in Cairo, Alexandria, and more.",
-    url: "https://www.xenon.com.eg/projects",
-    type: "website",
-    siteName: "Xenon Trade & Contracting",
-    locale: "en_EG",
-    alternateLocale: "ar_EG",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Xenon Projects Portfolio" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "150+ Fire Safety Projects Across Egypt | Xenon",
-    description: "Banking, healthcare, industrial & commercial fire safety projects across Egypt.",
-    images: ["/og-image.png"],
-  },
-  alternates: { canonical: "https://www.xenon.com.eg/projects" },
-};
-
-const SITE_URL = "https://www.xenon.com.eg";
+const PATH = "/projects";
 
 const FLAGSHIP_PROJECTS = [
   "National Bank of Egypt — Minya Branch",
@@ -40,7 +21,48 @@ const FLAGSHIP_PROJECTS = [
   "Multex Egypt Factory",
 ];
 
-export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pageMeta.projects" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: alternates(locale, PATH),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: localizedUrl(locale, PATH),
+      siteName: SITE_NAME,
+      type: "website",
+      locale: ogLocale(locale),
+      alternateLocale: ogAltLocale(locale),
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: t("title") }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["/og-image.png"],
+    },
+  };
+}
+
+export default async function ProjectsLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "nav" });
+
   return (
     <>
       <script
@@ -50,8 +72,8 @@ export default function ProjectsLayout({ children }: { children: React.ReactNode
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-              { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE_URL}/projects` },
+              { "@type": "ListItem", position: 1, name: t("home"), item: localizedUrl(locale) },
+              { "@type": "ListItem", position: 2, name: t("projects"), item: localizedUrl(locale, PATH) },
             ],
           }),
         }}
@@ -62,11 +84,11 @@ export default function ProjectsLayout({ children }: { children: React.ReactNode
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "@id": `${SITE_URL}/projects#collection`,
+            "@id": `${localizedUrl(locale, PATH)}#collection`,
             name: "Fire Safety & Security Projects",
             description:
               "Portfolio of 150+ completed fire safety and security projects by Xenon Trade & Contracting across banking, healthcare, industrial, sports, education and commercial sectors in Egypt.",
-            url: `${SITE_URL}/projects`,
+            url: localizedUrl(locale, PATH),
             isPartOf: { "@id": `${SITE_URL}/#website` },
             about: { "@id": `${SITE_URL}/#organization` },
             mainEntity: {

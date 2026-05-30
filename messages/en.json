@@ -243,5 +243,34 @@
   },
   "whatsapp": {
     "message": "Hello, I'd like to inquire about your fire safety services."
+  },
+  "pageMeta": {
+    "home": {
+      "title": "Xenon Trade & Contracting | Fire Safety & Security Systems — Egypt",
+      "description": "Integrated fire safety and security solutions in Egypt — fire alarm systems, sprinkler systems, gas suppression, CCTV, access control & electrical contracting. 14+ years, 150+ projects."
+    },
+    "about": {
+      "title": "About Us — Fire Safety Experts Since 2012",
+      "description": "Learn about Xenon Trade & Contracting — Egypt's trusted fire safety and security company. 14+ years of experience, 150+ projects, certified by international standards. Founded by Eng. Mina Wagdy."
+    },
+    "services": {
+      "title": "Our Services — Fire Safety, Security & Electrical Solutions",
+      "description": "Explore Xenon's 10 specialized services: fire alarm systems, sprinkler systems, gas suppression (FM200/CO2), CCTV surveillance, access control, electrical contracting, nurse call, kitchen hood suppression, and more."
+    },
+    "projects": {
+      "title": "Our Projects — 150+ Fire Safety Projects Across Egypt",
+      "description": "View Xenon's portfolio of 150+ completed fire safety and security projects across Egypt — banking, healthcare, industrial, sports, education, and commercial sectors."
+    },
+    "partners": {
+      "title": "Our Partners & Brands — Authorized IBC Distributor",
+      "description": "Xenon is an authorized IBC distributor working with Honeywell, Hochiki, TYCO, Kidde, Grundfos, Apollo, Simplex, TOA, Farfisa, Teletek and more — genuine international fire safety and security brands in Egypt."
+    },
+    "contact": {
+      "title": "Contact Us — Free Fire Safety Consultation",
+      "description": "Contact Xenon Trade & Contracting for fire safety and security solutions. Call 01221715027 / 01501548315, email eng.mina@xenon.com.eg, or visit us in Gesr Elswis, Cairo. Free consultations available."
+    }
+  },
+  "keywords": {
+    "list": "fire alarm Egypt|sprinkler system Cairo|CCTV installation Egypt|access control systems|FM200 gas suppression|CO2 fire suppression|Honeywell fire alarm Egypt|Hochiki Egypt|fire safety company Egypt|electrical contracting Cairo|nurse call system|kitchen hood suppression|intrusion alarm Egypt|public address system|IBC authorized distributor|NFPA Egypt"
   }
 }

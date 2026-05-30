@@ -1,11 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
-import "./globals.css";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_NAME_AR,
+  localizedUrl,
+  alternates,
+  ogLocale,
+  ogAltLocale,
+} from "@/i18n/seo";
+import "../globals.css";
 
-const SITE_URL = "https://www.xenon.com.eg";
-const SITE_NAME = "Xenon Trade & Contracting";
-const SITE_NAME_AR = "شركة زينون للتجارة والمقاولات";
+// Pre-render both locales at build time (static rendering).
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -17,182 +29,136 @@ export const viewport: Viewport = {
   ],
 };
 
-export const metadata: Metadata = {
-  title: {
-    default: "Xenon Trade & Contracting | Fire Safety & Security Systems — Egypt",
-    template: "%s | Xenon Trade & Contracting",
-  },
-  description:
-    "Leading Egyptian company specializing in fire alarm systems, sprinkler systems, CCTV, access control, and electrical contracting. 14+ years of experience, 150+ projects across banking, healthcare, industrial & commercial sectors.",
-  keywords: [
-    "fire alarm Egypt",
-    "sprinkler system Cairo",
-    "CCTV installation Egypt",
-    "access control systems",
-    "FM200 gas suppression",
-    "CO2 fire suppression",
-    "Honeywell fire alarm Egypt",
-    "Hochiki Egypt",
-    "fire safety company Egypt",
-    "electrical contracting Cairo",
-    "nurse call system",
-    "kitchen hood suppression",
-    "intrusion alarm Egypt",
-    "public address system",
-    "IBC authorized distributor",
-    "NFPA Egypt",
-    "زينون للتجارة والمقاولات",
-    "انظمة انذار الحريق مصر",
-    "كاميرات مراقبة مصر",
-    "رشاشات حريق",
-    "اطفاء غازات FM200",
-    "مقاولات كهربائية القاهرة",
-    "شركة سلامة حريق",
-  ],
-  metadataBase: new URL(SITE_URL),
-  applicationName: SITE_NAME,
-  authors: [{ name: "Eng. Mina Wagdy", url: SITE_URL }],
-  creator: SITE_NAME,
-  publisher: SITE_NAME,
-  formatDetection: {
-    telephone: true,
-    email: true,
-    address: true,
-  },
-  category: "Fire Safety & Security",
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pageMeta.home" });
+  const tk = await getTranslations({ locale, namespace: "keywords" });
+  const url = localizedUrl(locale);
 
-  // Open Graph — Facebook, WhatsApp, Telegram, LinkedIn
-  openGraph: {
-    title: "Xenon Trade & Contracting | Fire Safety & Security Systems — Egypt",
-    description:
-      "Integrated fire safety & security solutions. Fire alarms, sprinklers, CCTV, access control, gas suppression & electrical contracting. 14+ years, 150+ projects across Egypt.",
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    type: "website",
-    locale: "en_EG",
-    alternateLocale: "ar_EG",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Xenon Trade & Contracting — Fire Safety & Security Solutions in Egypt",
-        type: "image/png",
-      },
-      {
-        url: "/og-image-square.png",
-        width: 400,
-        height: 400,
-        alt: "Xenon Trade & Contracting Logo",
-        type: "image/png",
-      },
-      {
-        url: "/xenon-logo-512.png",
-        width: 512,
-        height: 512,
-        alt: "Xenon Logo",
-        type: "image/png",
-      },
-    ],
-    phoneNumbers: ["+201221715027", "+201501548315"],
-    emails: ["eng.mina@xenon.com.eg", "sales@xenon.com.eg"],
-    countryName: "Egypt",
-  },
+  return {
+    title: {
+      default: t("title"),
+      template: `%s | ${locale === "ar" ? SITE_NAME_AR : SITE_NAME}`,
+    },
+    description: t("description"),
+    keywords: tk("list").split("|"),
+    metadataBase: new URL(SITE_URL),
+    applicationName: SITE_NAME,
+    authors: [{ name: "Eng. Mina Wagdy", url: SITE_URL }],
+    creator: SITE_NAME,
+    publisher: SITE_NAME,
+    formatDetection: { telephone: true, email: true, address: true },
+    category: "Fire Safety & Security",
 
-  // Twitter Cards
-  twitter: {
-    card: "summary_large_image",
-    title: "Xenon Trade & Contracting | Fire Safety & Security — Egypt",
-    description:
-      "Integrated fire safety & security solutions. 14+ years, 150+ projects. Fire alarms, sprinklers, CCTV, access control & more.",
-    images: ["/og-image.png"],
-    creator: "@xenoncontracting",
-    site: "@xenoncontracting",
-  },
+    alternates: alternates(locale),
 
-  // Robots
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
+    // Open Graph — Facebook, WhatsApp, Telegram, LinkedIn
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url,
+      siteName: SITE_NAME,
+      type: "website",
+      locale: ogLocale(locale),
+      alternateLocale: ogAltLocale(locale),
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "Xenon Trade & Contracting — Fire Safety & Security Solutions in Egypt",
+          type: "image/png",
+        },
+        {
+          url: "/og-image-square.png",
+          width: 400,
+          height: 400,
+          alt: "Xenon Trade & Contracting Logo",
+          type: "image/png",
+        },
+      ],
+      phoneNumbers: ["+201221715027", "+201501548315"],
+      emails: ["eng.mina@xenon.com.eg", "sales@xenon.com.eg"],
+      countryName: "Egypt",
+    },
+
+    // Twitter Cards
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["/og-image.png"],
+      creator: "@xenoncontracting",
+      site: "@xenoncontracting",
+    },
+
+    // Robots
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
 
-  // Icons & PWA
-  icons: {
-    icon: [
-      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: [
-      { url: "/xenon-logo-256.png", sizes: "256x256" },
-      { url: "/xenon-logo-128.png", sizes: "128x128" },
-    ],
-  },
-
-  // Canonical & alternates
-  // NOTE: Arabic and English are served at the SAME URL via content negotiation
-  // (cookie/Accept-Language) — there is no separate /ar route. Declaring both
-  // languages against the canonical URL avoids broken hreflang to a 404 path.
-  alternates: {
-    canonical: SITE_URL,
-    languages: {
-      "x-default": SITE_URL,
+    // Icons & PWA
+    icons: {
+      icon: [
+        { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      ],
+      shortcut: "/favicon.ico",
+      apple: [
+        { url: "/xenon-logo-256.png", sizes: "256x256" },
+        { url: "/xenon-logo-128.png", sizes: "128x128" },
+      ],
     },
-  },
 
-  // App links
-  appLinks: {
-    web: {
-      url: SITE_URL,
-      should_fallback: true,
+    appLinks: { web: { url, should_fallback: true } },
+
+    other: {
+      "telegram:channel": "@xenoncontracting",
+      "business:contact_data:street_address": "27 @ 28st. Alhelmeya, Gesr Elswis",
+      "business:contact_data:locality": "Cairo",
+      "business:contact_data:country_name": "Egypt",
+      "business:contact_data:phone_number": "+201221715027, +201501548315",
+      "business:contact_data:email": "eng.mina@xenon.com.eg",
+      "business:contact_data:website": SITE_URL,
+      "pinterest-rich-pin": "true",
+      "apple-mobile-web-app-capable": "yes",
+      "apple-mobile-web-app-status-bar-style": "black-translucent",
+      "apple-mobile-web-app-title": "Xenon",
+      "msapplication-TileColor": "#1A1A2E",
+      "msapplication-TileImage": "/xenon-logo-256.png",
     },
-  },
+  };
+}
 
-  // Verification (placeholder — fill in real IDs when available)
-  // verification: {
-  //   google: "your-google-verification-id",
-  //   yandex: "your-yandex-id",
-  // },
-
-  other: {
-    // WhatsApp specific
-    "og:whatsapp_sticker_pack_publisher": SITE_NAME,
-    // Telegram
-    "telegram:channel": "@xenoncontracting",
-    // Business info
-    "business:contact_data:street_address": "27 @ 28st. Alhelmeya, Gesr Elswis",
-    "business:contact_data:locality": "Cairo",
-    "business:contact_data:country_name": "Egypt",
-    "business:contact_data:phone_number": "+201221715027, +201501548315",
-    "business:contact_data:email": "eng.mina@xenon.com.eg",
-    "business:contact_data:website": SITE_URL,
-    // Pinterest
-    "pinterest-rich-pin": "true",
-    // Apple
-    "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "black-translucent",
-    "apple-mobile-web-app-title": "Xenon",
-    // MS
-    "msapplication-TileColor": "#1A1A2E",
-    "msapplication-TileImage": "/xenon-logo-256.png",
-  },
-};
-
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
-  const locale = await getLocale();
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  // Enable static rendering for this request.
+  setRequestLocale(locale);
+
   const messages = await getMessages();
 
   return (
@@ -200,6 +166,7 @@ export default async function RootLayout({
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
       className="h-full antialiased"
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -287,10 +254,7 @@ export default async function RootLayout({
               priceRange: "$$",
               currenciesAccepted: "EGP",
               paymentAccepted: "Cash, Bank Transfer",
-              areaServed: {
-                "@type": "Country",
-                name: "Egypt",
-              },
+              areaServed: { "@type": "Country", name: "Egypt" },
               numberOfEmployees: {
                 "@type": "QuantitativeValue",
                 minValue: 10,
@@ -354,7 +318,7 @@ export default async function RootLayout({
           }}
         />
 
-        {/* Structured Data — WebSite (for sitelinks search box) */}
+        {/* Structured Data — WebSite */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -365,32 +329,12 @@ export default async function RootLayout({
               name: SITE_NAME,
               alternateName: SITE_NAME_AR,
               url: SITE_URL,
-              inLanguage: ["en", "ar"],
-              publisher: {
-                "@id": `${SITE_URL}/#organization`,
-              },
+              inLanguage: ["ar", "en"],
+              publisher: { "@id": `${SITE_URL}/#organization` },
             }),
           }}
         />
 
-        {/* Structured Data — BreadcrumbList (homepage) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: SITE_URL,
-                },
-              ],
-            }),
-          }}
-        />
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

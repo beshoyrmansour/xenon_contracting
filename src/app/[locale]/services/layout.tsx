@@ -1,35 +1,15 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import {
+  SITE_URL,
+  SITE_NAME,
+  localizedUrl,
+  alternates,
+  ogLocale,
+  ogAltLocale,
+} from "@/i18n/seo";
 
-export const metadata: Metadata = {
-  title: "Our Services — Fire Safety, Security & Electrical Solutions",
-  description:
-    "Explore Xenon's 10 specialized services: fire alarm systems, sprinkler systems, gas suppression (FM200/CO2), CCTV surveillance, access control, electrical contracting, nurse call, kitchen hood suppression, and more.",
-  keywords: [
-    "fire alarm systems Egypt", "sprinkler installation Cairo", "FM200 gas suppression",
-    "CCTV installation Egypt", "access control systems", "electrical contracting Cairo",
-    "Honeywell fire alarm", "Hochiki addressable", "TYCO sprinkler", "kitchen hood suppression",
-    "nurse call system Egypt", "انظمة انذار حريق", "رشاشات حريق مصر", "كاميرات مراقبة",
-  ],
-  openGraph: {
-    title: "Fire Safety & Security Services | Xenon Trade & Contracting",
-    description: "10 specialized fire safety, security, and electrical services. From fire alarms to sprinklers, CCTV to access control — all with international brands.",
-    url: "https://www.xenon.com.eg/services",
-    type: "website",
-    siteName: "Xenon Trade & Contracting",
-    locale: "en_EG",
-    alternateLocale: "ar_EG",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Xenon Fire Safety & Security Services" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Fire Safety & Security Services | Xenon",
-    description: "10 specialized services — fire alarms, sprinklers, CCTV, gas suppression, access control & more.",
-    images: ["/og-image.png"],
-  },
-  alternates: { canonical: "https://www.xenon.com.eg/services" },
-};
-
-const SITE_URL = "https://www.xenon.com.eg";
+const PATH = "/services";
 
 const SERVICE_LIST = [
   { name: "Fire Alarm Systems", description: "Conventional and addressable fire detection, notification & monitoring systems." },
@@ -44,7 +24,48 @@ const SERVICE_LIST = [
   { name: "Electrical Contracting", description: "Electrical extensions, panels, lighting and power distribution for industrial & commercial sites." },
 ];
 
-export default function ServicesLayout({ children }: { children: React.ReactNode }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pageMeta.services" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: alternates(locale, PATH),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: localizedUrl(locale, PATH),
+      siteName: SITE_NAME,
+      type: "website",
+      locale: ogLocale(locale),
+      alternateLocale: ogAltLocale(locale),
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: t("title") }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["/og-image.png"],
+    },
+  };
+}
+
+export default async function ServicesLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "nav" });
+
   return (
     <>
       <script
@@ -54,8 +75,8 @@ export default function ServicesLayout({ children }: { children: React.ReactNode
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-              { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
+              { "@type": "ListItem", position: 1, name: t("home"), item: localizedUrl(locale) },
+              { "@type": "ListItem", position: 2, name: t("services"), item: localizedUrl(locale, PATH) },
             ],
           }),
         }}

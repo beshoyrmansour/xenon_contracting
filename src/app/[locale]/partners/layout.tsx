@@ -1,35 +1,57 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import {
+  SITE_NAME,
+  localizedUrl,
+  alternates,
+  ogLocale,
+  ogAltLocale,
+} from "@/i18n/seo";
 
-export const metadata: Metadata = {
-  title: "Our Partners & Brands — Authorized IBC Distributor",
-  description:
-    "Xenon is an authorized IBC distributor working with Honeywell, Hochiki, TYCO, Kidde, Grundfos, Apollo, Simplex, TOA, Farfisa, Teletek, and more. Genuine international fire safety and security brands in Egypt.",
-  keywords: [
-    "IBC distributor Egypt", "Honeywell fire alarm Egypt", "Hochiki distributor",
-    "TYCO sprinkler Egypt", "Kidde FM200", "Grundfos fire pump",
-    "Apollo fire detection", "Simplex fire alarm Cairo", "TOA public address Egypt",
-    "موزع معتمد IBC", "هونيويل مصر", "انظمة حريق دولية",
-  ],
-  openGraph: {
-    title: "International Partners & Brands | Xenon Trade & Contracting",
-    description: "Authorized distributor for 20+ international fire safety and security brands including Honeywell, Hochiki, TYCO, and more.",
-    url: "https://www.xenon.com.eg/partners",
-    type: "website",
-    siteName: "Xenon Trade & Contracting",
-    locale: "en_EG",
-    alternateLocale: "ar_EG",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Xenon International Partners" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "International Partners & Brands | Xenon",
-    description: "Authorized distributor for 20+ international fire safety brands — Honeywell, Hochiki, TYCO & more.",
-    images: ["/og-image.png"],
-  },
-  alternates: { canonical: "https://www.xenon.com.eg/partners" },
-};
+const PATH = "/partners";
 
-export default function PartnersLayout({ children }: { children: React.ReactNode }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pageMeta.partners" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: alternates(locale, PATH),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: localizedUrl(locale, PATH),
+      siteName: SITE_NAME,
+      type: "website",
+      locale: ogLocale(locale),
+      alternateLocale: ogAltLocale(locale),
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: t("title") }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["/og-image.png"],
+    },
+  };
+}
+
+export default async function PartnersLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "nav" });
+
   return (
     <>
       <script
@@ -39,8 +61,8 @@ export default function PartnersLayout({ children }: { children: React.ReactNode
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.xenon.com.eg" },
-              { "@type": "ListItem", position: 2, name: "Partners", item: "https://www.xenon.com.eg/partners" },
+              { "@type": "ListItem", position: 1, name: t("home"), item: localizedUrl(locale) },
+              { "@type": "ListItem", position: 2, name: t("partners"), item: localizedUrl(locale, PATH) },
             ],
           }),
         }}

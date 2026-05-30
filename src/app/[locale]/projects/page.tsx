@@ -22,7 +22,7 @@ import {
   Download,
   ChevronRight,
 } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import LogoWatermark from "@/components/LogoWatermark";
 

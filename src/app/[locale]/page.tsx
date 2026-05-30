@@ -11,8 +11,16 @@ import ProcessSection from "@/components/home/ProcessSection";
 import BrandsCarousel from "@/components/home/BrandsCarousel";
 import SectorsGrid from "@/components/home/SectorsGrid";
 import CTABanner from "@/components/home/CTABanner";
+import { setRequestLocale } from "next-intl/server";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <Navbar />
