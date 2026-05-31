@@ -66,6 +66,9 @@ const brandCategories = [
       },
       { name: "Kidde", origin: "USA", spec: "Fire suppression (FM200, CO2)" },
       { name: "Giacomini", origin: "Italy", spec: "Firefighting equipment" },
+      { name: "Kennedy", origin: "USA", spec: "Fire hydrants & valves" },
+      { name: "VIKING", origin: "USA", spec: "Fire sprinkler & suppression systems" },
+      { name: "Reliable", origin: "USA", spec: "Fire sprinkler systems" },
     ],
   },
   {
@@ -82,16 +85,9 @@ const brandCategories = [
   {
     key: "cctvSurveillance",
     brands: [
-      {
-        name: "iiD / iiD 2 Secure",
-        origin: "Spain",
-        spec: "CCTV surveillance and video transmission",
-      },
-      {
-        name: "Farfisa",
-        origin: "Italy",
-        spec: "Intercom and CCTV surveillance",
-      },
+      { name: "Honeywell", origin: "USA", spec: "CCTV surveillance systems" },
+      { name: "Hikvision", origin: "China", spec: "CCTV & video surveillance" },
+      { name: "SAMSUNG", origin: "South Korea", spec: "CCTV surveillance cameras" },
     ],
   },
   {
@@ -118,16 +114,40 @@ const brandCategories = [
         origin: "Europe",
         spec: "Intrusion Alarm Systems",
       },
+      { name: "TEXECOM", origin: "UK", spec: "Intrusion alarm systems" },
+      { name: "Honeywell", origin: "USA", spec: "Security & intrusion systems" },
     ],
   },
   {
     key: "accessControl",
     brands: [
-      {
-        name: "EiD",
-        origin: "USA/Malaysia",
-        spec: "Access control and attendance tracking",
-      },
+      { name: "HID Global", origin: "USA", spec: "Access control systems" },
+      { name: "Honeywell", origin: "USA", spec: "Access control systems" },
+      { name: "Hikvision", origin: "China", spec: "Access control & CCTV" },
+    ],
+  },
+  {
+    key: "gasSuppression",
+    brands: [
+      { name: "ANSUL", origin: "USA", spec: "Gas & special hazard suppression" },
+      { name: "LPG", origin: "Global", spec: "Gas suppression systems" },
+      { name: "TYCO", origin: "Global", spec: "Gas suppression (FM200, CO2)" },
+      { name: "Kidde", origin: "USA", spec: "Gas suppression (FM200, CO2)" },
+    ],
+  },
+  {
+    key: "kitchenHood",
+    brands: [
+      { name: "BUCKEYE", origin: "USA", spec: "Kitchen hood fire suppression" },
+      { name: "Kidde", origin: "USA", spec: "Kitchen suppression systems" },
+      { name: "NAFFCO", origin: "UAE", spec: "Firefighting & kitchen suppression" },
+    ],
+  },
+  {
+    key: "nurseCall",
+    brands: [
+      { name: "Intercall", origin: "UK", spec: "Nurse call systems" },
+      { name: "Nurse Tab", origin: "Global", spec: "Nurse call systems" },
     ],
   },
 ];

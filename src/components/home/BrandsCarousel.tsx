@@ -4,7 +4,8 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { FadeInUp } from "@/components/ScrollReveal";
 
-const brands = [
+// `logo` is optional — brands without a logo file render their name as text.
+const brands: { name: string; logo?: string }[] = [
   { name: "Honeywell", logo: "/brands/honeywell.svg" },
   { name: "Hochiki", logo: "/brands/hochiki.svg" },
   { name: "TYCO", logo: "/brands/tyco.svg" },
@@ -12,14 +13,23 @@ const brands = [
   { name: "Farfisa", logo: "/brands/farfisa.svg" },
   { name: "Teletek", logo: "/brands/teletek.svg" },
   { name: "JD-Media", logo: "/brands/jd-media.svg" },
-  { name: "EiD", logo: "/brands/eid.svg" },
   { name: "Grundfos", logo: "/brands/grundfos.svg" },
   { name: "Apollo", logo: "/brands/apollo.svg" },
   { name: "Simplex", logo: "/brands/simplex.svg" },
   { name: "Kidde", logo: "/brands/kidde.svg" },
   { name: "Giacomini", logo: "/brands/giacomini.svg" },
   { name: "Aurora", logo: "/brands/aurora.svg" },
-  { name: "iiD", logo: "/brands/iid.svg" },
+  { name: "Hikvision" },
+  { name: "SAMSUNG" },
+  { name: "HID Global" },
+  { name: "TEXECOM" },
+  { name: "VIKING" },
+  { name: "Reliable" },
+  { name: "Kennedy" },
+  { name: "ANSUL" },
+  { name: "NAFFCO" },
+  { name: "BUCKEYE" },
+  { name: "Intercall" },
 ];
 
 export default function BrandsCarousel() {
@@ -46,13 +56,19 @@ export default function BrandsCarousel() {
                 key={idx}
                 className="flex-shrink-0 flex items-center justify-center w-[130px] sm:w-[160px] h-[60px] sm:h-[70px] bg-light rounded-xl px-3 sm:px-4 grayscale hover:grayscale-0 transition-all duration-300 hover:shadow-md border border-transparent hover:border-primary/10"
               >
-                <Image
-                  src={brand.logo}
-                  alt={brand.name}
-                  width={120}
-                  height={40}
-                  className="w-auto h-9 object-contain"
-                />
+                {brand.logo ? (
+                  <Image
+                    src={brand.logo}
+                    alt={brand.name}
+                    width={120}
+                    height={40}
+                    className="w-auto h-9 object-contain"
+                  />
+                ) : (
+                  <span className="text-sm sm:text-base font-bold text-text-muted text-center">
+                    {brand.name}
+                  </span>
+                )}
               </div>
             ))}
           </div>

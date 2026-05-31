@@ -75,8 +75,8 @@ export default function ServicesPage() {
 
         {/* Sticky navigation tabs — modernized */}
         <div className="sticky top-[52px] sm:top-[56px] z-30 bg-white border-b border-gray-100 shadow-sm">
-          <div className="mx-auto px-4 sm:px-6 lg:px-8 overflow-x-auto scrollbar-hide">
-            <div className="flex gap-1 py-2 sm:py-2.5 w-max mx-auto">
+          <div className="mx-auto overflow-x-auto scrollbar-hide">
+            <div className="flex mt-4 gap-1 py-2 sm:py-2.5 px-4 sm:px-6 lg:px-8 w-max mx-auto">
               {services.map((service) => {
                 const Icon = service.icon;
                 const isActive = activeTab === service.key;
@@ -152,110 +152,110 @@ export default function ServicesPage() {
                   <div
                     className={`${isReversed ? "lg:order-1" : ""} py-8 sm:py-12 lg:py-16 px-4 sm:px-6 ${isReversed ? "lg:ps-8 lg:pe-12 xl:pe-16" : "lg:ps-10 lg:pe-8 xl:ps-14"}`}
                   >
-                      {/* Section label */}
-                      <span
-                        className={`section-label ${isDark ? "section-label-light" : ""} mb-4 inline-block`}
-                      >
-                        {t(service.key)}
-                      </span>
+                    {/* Section label */}
+                    <span
+                      className={`section-label ${isDark ? "section-label-light" : ""} mb-4 inline-block`}
+                    >
+                      {t(service.key)}
+                    </span>
 
-                      <h2
-                        className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 mt-3 ${isDark ? "text-white" : "text-text-dark"}`}
-                      >
-                        {t(service.key)}
-                      </h2>
+                    <h2
+                      className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 mt-3 ${isDark ? "text-white" : "text-text-dark"}`}
+                    >
+                      {t(service.key)}
+                    </h2>
 
-                      <p
-                        className={`leading-relaxed mb-8 text-base ${isDark ? "text-gray-200" : "text-text-muted"}`}
-                      >
-                        {t(`${service.key}Desc`)}
-                      </p>
+                    <p
+                      className={`leading-relaxed mb-8 text-base ${isDark ? "text-gray-200" : "text-text-muted"}`}
+                    >
+                      {t(`${service.key}Desc`)}
+                    </p>
 
-                      {/* Key Features — modern grid */}
-                      <div className="mb-8">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          {features.map((feature, i) => (
-                            <div
-                              key={i}
-                              className={`flex items-start gap-3 p-3 rounded-lg transition-colors ${
-                                isDark
-                                  ? "bg-white/5 hover:bg-white/8"
-                                  : "bg-light hover:bg-gray-100"
-                              }`}
-                            >
-                              <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                              <span
-                                className={`text-sm ${isDark ? "text-gray-200" : "text-text-dark"}`}
-                              >
-                                {feature}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Brands */}
-                      {service.brands.length > 0 && (
-                        <div className="mb-8">
-                          <h3
-                            className={`text-xs font-bold uppercase tracking-wider mb-3 ${isDark ? "text-white/70" : "text-text-muted"}`}
+                    {/* Key Features — modern grid */}
+                    <div className="mb-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {features.map((feature, i) => (
+                          <div
+                            key={i}
+                            className={`flex items-start gap-3 p-3 rounded-lg transition-colors ${
+                              isDark
+                                ? "bg-white/5 hover:bg-white/8"
+                                : "bg-light hover:bg-gray-100"
+                            }`}
                           >
-                            {t("brandsUsed")}
-                          </h3>
-                          <div className="flex flex-wrap gap-2">
-                            {service.brands.map((brand) => (
-                              <span
-                                key={brand}
-                                className={`px-3 py-1.5 rounded-full text-xs font-semibold ${
-                                  isDark
-                                    ? "bg-white/10 text-white/90 border border-white/10"
-                                    : "bg-white text-text-dark border border-gray-200 shadow-sm"
-                                }`}
-                              >
-                                {brand}
-                              </span>
-                            ))}
+                            <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                            <span
+                              className={`text-sm ${isDark ? "text-gray-200" : "text-text-dark"}`}
+                            >
+                              {feature}
+                            </span>
                           </div>
-                        </div>
-                      )}
+                        ))}
+                      </div>
+                    </div>
 
-                      {/* Industries */}
+                    {/* Brands */}
+                    {service.brands.length > 0 && (
                       <div className="mb-8">
                         <h3
                           className={`text-xs font-bold uppercase tracking-wider mb-3 ${isDark ? "text-white/70" : "text-text-muted"}`}
                         >
-                          {t("industriesServed")}
+                          {t("brandsUsed")}
                         </h3>
                         <div className="flex flex-wrap gap-2">
-                          {service.industries.map((ind) => {
-                            const IndIcon = industryIcons[ind] || Factory;
-                            return (
-                              <span
-                                key={ind}
-                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${
-                                  isDark
-                                    ? "bg-primary/20 text-primary border border-primary/20"
-                                    : "bg-primary/5 text-primary border border-primary/10"
-                                }`}
-                              >
-                                <IndIcon className="w-3.5 h-3.5" />
-                                {tp(ind)}
-                              </span>
-                            );
-                          })}
+                          {service.brands.map((brand) => (
+                            <span
+                              key={brand}
+                              className={`px-3 py-1.5 rounded-full text-xs font-semibold ${
+                                isDark
+                                  ? "bg-white/10 text-white/90 border border-white/10"
+                                  : "bg-white text-text-dark border border-gray-200 shadow-sm"
+                              }`}
+                            >
+                              {brand}
+                            </span>
+                          ))}
                         </div>
                       </div>
+                    )}
 
-                      {/* CTA */}
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white font-bold rounded-lg hover:bg-primary-dark transition-colors"
+                    {/* Industries */}
+                    <div className="mb-8">
+                      <h3
+                        className={`text-xs font-bold uppercase tracking-wider mb-3 ${isDark ? "text-white/70" : "text-text-muted"}`}
                       >
-                        {t("requestQuote")}
-                        <ArrowUpRight className="w-4 h-4" />
-                      </Link>
+                        {t("industriesServed")}
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {service.industries.map((ind) => {
+                          const IndIcon = industryIcons[ind] || Factory;
+                          return (
+                            <span
+                              key={ind}
+                              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${
+                                isDark
+                                  ? "bg-primary/20 text-primary border border-primary/20"
+                                  : "bg-primary/5 text-primary border border-primary/10"
+                              }`}
+                            >
+                              <IndIcon className="w-3.5 h-3.5" />
+                              {tp(ind)}
+                            </span>
+                          );
+                        })}
+                      </div>
                     </div>
+
+                    {/* CTA */}
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white font-bold rounded-lg hover:bg-primary-dark transition-colors"
+                    >
+                      {t("requestQuote")}
+                      <ArrowUpRight className="w-4 h-4" />
+                    </Link>
                   </div>
+                </div>
               </section>
             );
           })}
