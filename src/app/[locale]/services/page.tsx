@@ -28,6 +28,8 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
+import { brandLogoMap } from "@/data/brands";
 import { useState, useEffect } from "react";
 
 const industryIcons: Record<string, typeof Landmark> = {
@@ -203,18 +205,34 @@ export default function ServicesPage() {
                           {t("brandsUsed")}
                         </h3>
                         <div className="flex flex-wrap gap-2">
-                          {service.brands.map((brand) => (
-                            <span
-                              key={brand}
-                              className={`px-3 py-1.5 rounded-full text-xs font-semibold ${
-                                isDark
-                                  ? "bg-white/10 text-white/90 border border-white/10"
-                                  : "bg-white text-text-dark border border-gray-200 shadow-sm"
-                              }`}
-                            >
-                              {brand}
-                            </span>
-                          ))}
+                          {service.brands.map((brand) =>
+                            brandLogoMap[brand] ? (
+                              <span
+                                key={brand}
+                                title={brand}
+                                className="flex items-center justify-center h-9 px-3 rounded-lg bg-white border border-gray-200 shadow-sm"
+                              >
+                                <Image
+                                  src={brandLogoMap[brand]}
+                                  alt={brand}
+                                  width={90}
+                                  height={28}
+                                  className="w-auto h-6 object-contain"
+                                />
+                              </span>
+                            ) : (
+                              <span
+                                key={brand}
+                                className={`flex items-center h-9 px-3 rounded-lg text-xs font-semibold ${
+                                  isDark
+                                    ? "bg-white/10 text-white/90 border border-white/10"
+                                    : "bg-white text-text-dark border border-gray-200 shadow-sm"
+                                }`}
+                              >
+                                {brand}
+                              </span>
+                            ),
+                          )}
                         </div>
                       </div>
                     )}

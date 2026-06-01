@@ -12,144 +12,65 @@ import {
   StaggerItem,
 } from "@/components/ScrollReveal";
 import Image from "next/image";
-import { Award, ShieldCheck, Globe, BadgeCheck } from "lucide-react";
+import { Award, ShieldCheck, Globe, BadgeCheck, ExternalLink } from "lucide-react";
+import { brandLogoMap, brandUrlMap } from "@/data/brands";
 
-const brandLogoMap: Record<string, string> = {
-  Honeywell: "/brands/honeywell.svg",
-  Hochiki: "/brands/hochiki.svg",
-  TYCO: "/brands/tyco.svg",
-  TOA: "/brands/toa.svg",
-  Farfisa: "/brands/farfisa.svg",
-  "Teletek Electronics": "/brands/teletek.svg",
-  "JD-Media": "/brands/jd-media.svg",
-  EiD: "/brands/eid.svg",
-  Grundfos: "/brands/grundfos.svg",
-  Apollo: "/brands/apollo.svg",
-  Simplex: "/brands/simplex.svg",
-  Kidde: "/brands/kidde.svg",
-  Giacomini: "/brands/giacomini.svg",
-  Aurora: "/brands/aurora.svg",
-  "iiD / iiD 2 Secure": "/brands/iid.svg",
-  "Fire Products": "/brands/fire-products.svg",
-  "Fairbanks Morse": "/brands/fairbanks-morse.svg",
-  Patterson: "/brands/patterson.svg",
-  Peerless: "/brands/peerless.svg",
-  Watex: "/brands/watex.svg",
-};
-
-const brandCategories = [
+// Flat, uncategorized brand list. Brands that previously spanned multiple
+// categories are listed once with their specs merged.
+const brands = [
+  { name: "Hochiki", origin: "UK/Japan", spec: "Addressable Fire Alarm Systems" },
   {
-    key: "fireAlarm",
-    brands: [
-      {
-        name: "Hochiki",
-        origin: "UK/Japan",
-        spec: "Addressable Fire Alarm Systems",
-      },
-      {
-        name: "Fire Products",
-        origin: "UK",
-        spec: "Conventional Fire Alarm Systems",
-      },
-      { name: "Honeywell", origin: "USA", spec: "Fire alarm systems" },
-      { name: "Apollo", origin: "UK", spec: "Fire detection" },
-      { name: "Simplex", origin: "USA", spec: "Fire alarm systems" },
-    ],
+    name: "Honeywell",
+    origin: "USA",
+    spec: "Fire alarm, CCTV, intrusion & access control systems",
+  },
+  { name: "Apollo", origin: "UK", spec: "Fire detection" },
+  { name: "Simplex", origin: "USA", spec: "Fire alarm systems" },
+  {
+    name: "TYCO",
+    origin: "Global",
+    spec: "Firefighting & gas suppression systems",
   },
   {
-    key: "firefighting",
-    brands: [
-      {
-        name: "TYCO",
-        origin: "Global",
-        spec: "Firefighting and suppression systems",
-      },
-      { name: "Kidde", origin: "USA", spec: "Fire suppression (FM200, CO2)" },
-      { name: "Giacomini", origin: "Italy", spec: "Firefighting equipment" },
-      { name: "Kennedy", origin: "USA", spec: "Fire hydrants & valves" },
-      { name: "VIKING", origin: "USA", spec: "Fire sprinkler & suppression systems" },
-      { name: "Reliable", origin: "USA", spec: "Fire sprinkler systems" },
-    ],
+    name: "Kidde",
+    origin: "USA",
+    spec: "Fire, gas & kitchen suppression (FM200, CO2)",
+  },
+  { name: "Giacomini", origin: "Italy", spec: "Firefighting equipment" },
+  { name: "Kennedy", origin: "USA", spec: "Fire hydrants & valves" },
+  { name: "VIKING", origin: "USA", spec: "Fire sprinkler & suppression systems" },
+  { name: "Reliable", origin: "USA", spec: "Fire sprinkler systems" },
+  { name: "Grundfos", origin: "Denmark", spec: "Firefighting pumps" },
+  { name: "Aurora", origin: "USA", spec: "Firefighting pumps (UL/FM)" },
+  { name: "Fairbanks Morse", origin: "USA", spec: "Firefighting pumps" },
+  { name: "Patterson", origin: "USA", spec: "Firefighting pumps" },
+  { name: "Peerless", origin: "USA", spec: "Firefighting pumps" },
+  { name: "Watex", origin: "Regional", spec: "Firefighting pumps" },
+  {
+    name: "Hikvision",
+    origin: "China",
+    spec: "CCTV, video surveillance & access control",
+  },
+  { name: "SAMSUNG", origin: "South Korea", spec: "CCTV surveillance cameras" },
+  {
+    name: "TOA",
+    origin: "Japan",
+    spec: "Public address, paging, video conferencing",
   },
   {
-    key: "pumps",
-    brands: [
-      { name: "Grundfos", origin: "Denmark", spec: "Firefighting pumps" },
-      { name: "Aurora", origin: "USA", spec: "Firefighting pumps (UL/FM)" },
-      { name: "Fairbanks Morse", origin: "USA", spec: "Firefighting pumps" },
-      { name: "Patterson", origin: "USA", spec: "Firefighting pumps" },
-      { name: "Peerless", origin: "USA", spec: "Firefighting pumps" },
-      { name: "Watex", origin: "Regional", spec: "Firefighting pumps" },
-    ],
+    name: "JD-Media",
+    origin: "South Korea",
+    spec: "Public address systems, paging units",
   },
-  {
-    key: "cctvSurveillance",
-    brands: [
-      { name: "Honeywell", origin: "USA", spec: "CCTV surveillance systems" },
-      { name: "Hikvision", origin: "China", spec: "CCTV & video surveillance" },
-      { name: "SAMSUNG", origin: "South Korea", spec: "CCTV surveillance cameras" },
-    ],
-  },
-  {
-    key: "publicAddress",
-    brands: [
-      {
-        name: "TOA",
-        origin: "Japan",
-        spec: "Public address, paging, video conferencing",
-      },
-      {
-        name: "JD-Media",
-        origin: "South Korea",
-        spec: "Public address systems, paging units",
-      },
-      { name: "Farfisa", origin: "Italy", spec: "Intercom systems" },
-    ],
-  },
-  {
-    key: "intrusionAlarm",
-    brands: [
-      {
-        name: "Teletek Electronics",
-        origin: "Europe",
-        spec: "Intrusion Alarm Systems",
-      },
-      { name: "TEXECOM", origin: "UK", spec: "Intrusion alarm systems" },
-      { name: "Honeywell", origin: "USA", spec: "Security & intrusion systems" },
-    ],
-  },
-  {
-    key: "accessControl",
-    brands: [
-      { name: "HID Global", origin: "USA", spec: "Access control systems" },
-      { name: "Honeywell", origin: "USA", spec: "Access control systems" },
-      { name: "Hikvision", origin: "China", spec: "Access control & CCTV" },
-    ],
-  },
-  {
-    key: "gasSuppression",
-    brands: [
-      { name: "ANSUL", origin: "USA", spec: "Gas & special hazard suppression" },
-      { name: "LPG", origin: "Global", spec: "Gas suppression systems" },
-      { name: "TYCO", origin: "Global", spec: "Gas suppression (FM200, CO2)" },
-      { name: "Kidde", origin: "USA", spec: "Gas suppression (FM200, CO2)" },
-    ],
-  },
-  {
-    key: "kitchenHood",
-    brands: [
-      { name: "BUCKEYE", origin: "USA", spec: "Kitchen hood fire suppression" },
-      { name: "Kidde", origin: "USA", spec: "Kitchen suppression systems" },
-      { name: "NAFFCO", origin: "UAE", spec: "Firefighting & kitchen suppression" },
-    ],
-  },
-  {
-    key: "nurseCall",
-    brands: [
-      { name: "Intercall", origin: "UK", spec: "Nurse call systems" },
-      { name: "Nurse Tab", origin: "Global", spec: "Nurse call systems" },
-    ],
-  },
+  { name: "Farfisa", origin: "Italy", spec: "Intercom systems" },
+  { name: "Teletek Electronics", origin: "Europe", spec: "Intrusion Alarm Systems" },
+  { name: "TEXECOM", origin: "UK", spec: "Intrusion alarm systems" },
+  { name: "HID Global", origin: "USA", spec: "Access control systems" },
+  { name: "ANSUL", origin: "USA", spec: "Gas & special hazard suppression" },
+  { name: "LPG", origin: "Global", spec: "Gas suppression systems" },
+  { name: "BUCKEYE", origin: "USA", spec: "Kitchen hood fire suppression" },
+  { name: "NAFFCO", origin: "UAE", spec: "Firefighting & kitchen suppression" },
+  { name: "Intercall", origin: "UK", spec: "Nurse call systems" },
 ];
 
 const whyBrands = [
@@ -186,52 +107,59 @@ export default function PartnersPage() {
           </div>
         </section>
 
-        {/* Brands by Category */}
+        {/* All Brands */}
         <section className="py-12 sm:py-20 bg-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {brandCategories.map((cat, catIdx) => (
-              <FadeInUp key={cat.key} delay={catIdx * 0.05}>
-                <div className="mb-16 sm:mb-20 last:mb-0">
-                  <h3 className="text-xl font-bold text-text-dark mb-8 flex items-center gap-2">
-                    <span className="w-1.5 h-6 bg-secondary rounded-full" />
-                    {t(cat.key)}
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {cat.brands.map((brand) => (
-                      <div
-                        key={brand.name}
-                        className="glass-card p-5 rounded-xl shadow-sm hover:shadow-lg hover:border-secondary border-2 border-transparent transition-all duration-300"
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {brands.map((brand) => {
+                const href = brandUrlMap[brand.name];
+                const content = (
+                  <>
+                    {/* Logo slot — always reserved so names align across the row */}
+                    <div className="h-[52px] flex items-center justify-center mb-4">
+                      {brandLogoMap[brand.name] && (
+                        <Image
+                          src={brandLogoMap[brand.name]}
+                          alt={brand.name}
+                          width={140}
+                          height={52}
+                          className="w-auto max-h-[48px] object-contain"
+                        />
+                      )}
+                    </div>
+                    <h4 className="font-semibold text-text-dark flex items-center gap-1.5">
+                      {brand.name}
+                      {href && (
+                        <ExternalLink className="w-3.5 h-3.5 text-text-muted group-hover:text-secondary transition-colors" />
+                      )}
+                    </h4>
+                    <span className="mt-1.5 text-xs px-2 py-0.5 bg-light rounded-full text-text-muted">
+                      {brand.origin}
+                    </span>
+                    <p className="mt-3 text-sm text-text-muted">{brand.spec}</p>
+                  </>
+                );
+                const cardClass =
+                  "group glass-card p-5 rounded-xl shadow-sm hover:shadow-lg hover:border-secondary border-2 border-transparent transition-all duration-300 h-full flex flex-col items-center text-center";
+
+                return (
+                  <FadeInUp key={brand.name}>
+                    {href ? (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cardClass}
                       >
-                        <div className="flex items-center gap-4 mb-3">
-                          {brandLogoMap[brand.name] && (
-                            <div className="w-[100px] h-[40px] flex items-center justify-center flex-shrink-0">
-                              <Image
-                                src={brandLogoMap[brand.name]}
-                                alt={brand.name}
-                                width={100}
-                                height={40}
-                                className="w-auto h-[32px] object-contain"
-                              />
-                            </div>
-                          )}
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center justify-between">
-                              <h4 className="font-semibold text-text-dark truncate">
-                                {brand.name}
-                              </h4>
-                              <span className="text-xs px-2 py-0.5 bg-light rounded-full text-text-muted flex-shrink-0 ms-2">
-                                {brand.origin}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <p className="text-sm text-text-muted">{brand.spec}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </FadeInUp>
-            ))}
+                        {content}
+                      </a>
+                    ) : (
+                      <div className={cardClass}>{content}</div>
+                    )}
+                  </FadeInUp>
+                );
+              })}
+            </div>
           </div>
         </section>
 
