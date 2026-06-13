@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { SITE_URL, localizedUrl } from "@/i18n/seo";
+import { articles } from "@/data/articles";
+import { cities } from "@/data/locations";
 
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
 
@@ -16,7 +18,20 @@ const ROUTES: Route[] = [
   { path: "/projects", changeFrequency: "monthly", priority: 0.8 },
   { path: "/about", changeFrequency: "monthly", priority: 0.8 },
   { path: "/partners", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.9 },
+  // City landing pages
+  ...cities.map((c) => ({
+    path: `/locations/${c.slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  })),
+  // Blog articles
+  ...articles.map((a) => ({
+    path: `/blog/${a.slug}`,
+    changeFrequency: "yearly" as const,
+    priority: 0.6,
+  })),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -9,6 +9,7 @@
     "services": "Services",
     "projects": "Projects",
     "partners": "Partners",
+    "blog": "Blog",
     "contact": "Contact",
     "callNow": "Call Now",
     "language": "عربي"
@@ -264,6 +265,38 @@
     "q6": "Which areas in Egypt do you cover?",
     "a6": "We serve Cairo, Giza, Alexandria and all governorates, including the New Administrative Capital, 6th of October and industrial zones."
   },
+  "servicesFaq": {
+    "title": "Service FAQ",
+    "subtitle": "Questions about our fire fighting, security & electrical services",
+    "q1": "How much does a fire fighting system cost in Egypt?",
+    "a1": "Pricing depends on the building area, occupancy type and the systems required (alarm, sprinklers, gas suppression). After a free site survey we provide a detailed quotation compliant with the Egyptian Fire Code. Contact us for a free assessment.",
+    "q2": "Do you supply, install and maintain the systems, or only sell equipment?",
+    "a2": "We handle the full cycle: consultation, design, supply of genuine branded equipment, professional installation, testing, commissioning and ongoing maintenance contracts.",
+    "q3": "Can you obtain Civil Defense approval for our facility?",
+    "a3": "Yes. We design and document systems to the Egyptian Fire Code (305) and Civil Defense requirements, and support you through inspection and approval.",
+    "q4": "What fire extinguisher and cylinder services do you offer?",
+    "a4": "We supply, install, inspect, pressure-test and refill all types of fire extinguishers and FM200/CO2 cylinders, with scheduled maintenance to keep them compliant.",
+    "q5": "Do you work with both addressable and conventional fire alarm systems?",
+    "a5": "Yes — we install conventional systems for smaller premises and addressable systems for larger facilities such as hospitals, malls and factories that need device-level location.",
+    "q6": "Which brands do you use?",
+    "a6": "We are an authorized IBC distributor and work with Honeywell, Hochiki, Apollo, Simplex, TYCO, Kidde, Grundfos, TOA and more — genuine, internationally certified products."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Fire safety guides, standards and insights for Egypt",
+    "readMore": "Read article",
+    "backToBlog": "Back to blog",
+    "relatedReading": "Continue reading",
+    "publishedOn": "Published"
+  },
+  "locations": {
+    "eyebrow": "Service Area",
+    "servicesTitle": "What we provide in {city}",
+    "coverageTitle": "Areas we cover",
+    "ctaTitle": "Need fire fighting or security systems in {city}?",
+    "ctaSubtitle": "Get a free site survey and a quotation compliant with the Egyptian Fire Code.",
+    "ctaButton": "Request a free quote"
+  },
   "pageMeta": {
     "home": {
       "title": "Xenon Trade & Contracting | Fire Safety & Security Systems — Egypt",
@@ -284,6 +317,10 @@
     "partners": {
       "title": "Our Partners & Brands — Authorized IBC Distributor",
       "description": "Xenon is an authorized IBC distributor working with Honeywell, Hochiki, TYCO, Kidde, Grundfos, Apollo, Simplex, TOA, Farfisa, Teletek and more — genuine international fire safety and security brands in Egypt."
+    },
+    "blog": {
+      "title": "Blog — Fire Fighting Systems, Codes & Safety Guides in Egypt",
+      "description": "Practical fire safety guides for Egypt: addressable vs conventional alarms, the Egyptian Fire Code 305, FM200 vs CO2 suppression and more from Xenon."
     },
     "contact": {
       "title": "Contact Us — Free Fire Safety Consultation",

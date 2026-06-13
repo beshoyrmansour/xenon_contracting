@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
 import PageHero from "@/components/PageHero";
+import FaqSection from "@/components/home/FaqSection";
 import { FadeInUp } from "@/components/ScrollReveal";
 import { services } from "@/data/services";
 import {
@@ -355,6 +356,9 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+
+        {/* Service FAQ — keyword-rich Q&A + FAQPage schema */}
+        <FaqSection namespace="servicesFaq" />
 
         {/* Bottom CTA — modernized */}
         <section className="relative py-20 bg-primary overflow-hidden">

@@ -1,0 +1,122 @@
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToTop from "@/components/BackToTop";
+import PageHero from "@/components/PageHero";
+import { Link } from "@/i18n/navigation";
+import { articles } from "@/data/articles";
+import {
+  SITE_NAME,
+  localizedUrl,
+  alternates,
+  ogLocale,
+  ogAltLocale,
+} from "@/i18n/seo";
+
+const PATH = "/blog";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pageMeta.blog" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: alternates(locale, PATH),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: localizedUrl(locale, PATH),
+      siteName: SITE_NAME,
+      type: "website",
+      locale: ogLocale(locale),
+      alternateLocale: ogAltLocale(locale),
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: t("title") }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["/og-image.png"],
+    },
+  };
+}
+
+export default async function BlogIndex({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "blog" });
+  const isAr = locale === "ar";
+  const dateFmt = new Intl.DateTimeFormat(isAr ? "ar-EG" : "en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  const sorted = [...articles].sort((a, b) => b.date.localeCompare(a.date));
+
+  return (
+    <>
+      <Navbar />
+      <main>
+        <PageHero title={t("title")} subtitle={t("subtitle")} />
+
+        <section className="py-16 sm:py-24 bg-light">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {sorted.map((article) => (
+                <Link
+                  key={article.slug}
+                  href={`/blog/${article.slug}`}
+                  className="group flex flex-col bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-primary/30 hover:shadow-xl hover:shadow-gray-200/60 hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="relative h-44 overflow-hidden">
+                    <Image
+                      src={article.cover}
+                      alt={isAr ? article.title.ar : article.title.en}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex flex-col flex-1 p-6">
+                    <time
+                      dateTime={article.date}
+                      className="text-xs text-text-muted mb-2"
+                    >
+                      {dateFmt.format(new Date(article.date))}
+                    </time>
+                    <h2 className="font-bold text-text-dark text-lg leading-snug mb-2">
+                      {isAr ? article.title.ar : article.title.en}
+                    </h2>
+                    <p className="text-sm text-text-muted leading-relaxed line-clamp-3 mb-4">
+                      {isAr ? article.excerpt.ar : article.excerpt.en}
+                    </p>
+                    <span className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">
+                      {t("readMore")}
+                      <ArrowUpRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+      <WhatsAppButton />
+      <BackToTop />
+    </>
+  );
+}

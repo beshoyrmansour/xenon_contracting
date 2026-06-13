@@ -121,14 +121,22 @@ that captures research-stage traffic and internally links to Services.
 | **Partners** | brand names + معتمد/authorized distributor |
 | **Blog (recommended)** | informational cluster (section 8) |
 
-## Recommended next steps (beyond metadata)
+## Implemented in the codebase
 
-1. **Add an Arabic blog** targeting section 8 — biggest untapped organic opportunity.
-2. **Location landing pages** (مكافحة حريق القاهرة / الجيزة / الاسكندرية) for local pack.
-3. **Weave head terms into visible H1/H2 and service body copy**, not just meta.
-4. **Image alt text** on `/public/services/*` using AR+EN service names.
-5. **Google Business Profile** in Arabic — critical for "مكافحة حريق + [district]" local results.
-6. Validate volumes in Keyword Planner (geo: Egypt, lang: Arabic) and prune low-value terms.
+- ✅ **Bilingual blog** (`/blog`, `/blog/[slug]`) with 3 starter articles on section 8 topics + BlogPosting schema.
+- ✅ **City landing pages** (`/locations/cairo`, `/giza`, `/alexandria`) targeting "مكافحة حريق + city" + Service/areaServed schema.
+- ✅ **FAQ sections** with FAQPage schema on Home and Services (informational + transactional Q&A).
+- ✅ **Head term "مكافحة حريق"** woven into hero, section headings and meta across pages.
+- ✅ Image alt text confirmed already localized (`alt={t(service.key)}`); decorative images correctly empty.
+- ✅ Sitemap, nav and footer updated with the new routes.
+
+## Recommended next steps (outside the codebase)
+
+1. **Run `npm run build`** to confirm the new routes compile (couldn't be run in this session).
+2. **Publish more blog articles** monthly on section 8 topics — momentum compounds.
+3. **Google Business Profile** in Arabic — critical for "مكافحة حريق + [district]" local results.
+4. Validate volumes in Keyword Planner (geo: Egypt, lang: Arabic) and prune low-value terms.
+5. Build **backlinks** from Egyptian directories (Yellow Pages, etc.) using the head terms as anchor text.
 
 ---
 *Sources: Egypt Yellow Pages category data; competitor SERPs (SST Egypt, UPCO, Comatrol,

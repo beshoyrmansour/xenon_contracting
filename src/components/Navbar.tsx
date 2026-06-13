@@ -73,6 +73,7 @@ export default function Navbar() {
     { href: "/services", label: t("services"), hasDropdown: true },
     { href: "/projects", label: t("projects") },
     { href: "/partners", label: t("partners") },
+    { href: "/blog", label: t("blog") },
     { href: "/contact", label: t("contact") },
   ];
 

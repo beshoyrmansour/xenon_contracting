@@ -6,11 +6,22 @@ import { ChevronDown } from "lucide-react";
 import { FadeInUp } from "@/components/ScrollReveal";
 import LogoWatermark from "@/components/LogoWatermark";
 
-// Question/answer keys live in the `faq` namespace (messages/{en,ar}.json).
-const FAQ_KEYS = ["1", "2", "3", "4", "5", "6"] as const;
+interface FaqSectionProps {
+  /** Translation namespace holding `title`, `subtitle`, `q{n}`, `a{n}`. */
+  namespace?: string;
+  /** Number of question/answer pairs to render. */
+  count?: number;
+  /** Optional background utility class. */
+  background?: string;
+}
 
-export default function FaqSection() {
-  const t = useTranslations("faq");
+export default function FaqSection({
+  namespace = "faq",
+  count = 6,
+  background = "bg-white",
+}: FaqSectionProps) {
+  const t = useTranslations(namespace);
+  const keys = Array.from({ length: count }, (_, i) => String(i + 1));
   const [open, setOpen] = useState<string | null>("1");
 
   // Build FAQPage structured data from the same translated copy that renders
@@ -18,7 +29,7 @@ export default function FaqSection() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: FAQ_KEYS.map((k) => ({
+    mainEntity: keys.map((k) => ({
       "@type": "Question",
       name: t(`q${k}`),
       acceptedAnswer: { "@type": "Answer", text: t(`a${k}`) },
@@ -26,7 +37,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-white relative overflow-hidden">
+    <section className={`py-16 sm:py-24 ${background} relative overflow-hidden`}>
       <LogoWatermark
         variant="dark"
         opacity={0.03}
@@ -49,7 +60,7 @@ export default function FaqSection() {
 
         <FadeInUp>
           <div className="divide-y divide-gray-100 rounded-2xl border border-gray-100 bg-light/40">
-            {FAQ_KEYS.map((k) => {
+            {keys.map((k) => {
               const isOpen = open === k;
               return (
                 <div key={k}>

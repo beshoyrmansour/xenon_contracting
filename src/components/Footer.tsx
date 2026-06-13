@@ -28,6 +28,7 @@ export default function Footer() {
     { href: "/services", label: nav("services") },
     { href: "/projects", label: nav("projects") },
     { href: "/partners", label: nav("partners") },
+    { href: "/blog", label: nav("blog") },
     { href: "/contact", label: nav("contact") },
   ];
 
