@@ -10,6 +10,7 @@ import PageHero from "@/components/PageHero";
 import { Link } from "@/i18n/navigation";
 import { articles } from "@/data/articles";
 import {
+  SITE_URL,
   SITE_NAME,
   localizedUrl,
   alternates,
@@ -58,6 +59,7 @@ export default async function BlogIndex({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "blog" });
+  const tn = await getTranslations({ locale, namespace: "nav" });
   const isAr = locale === "ar";
   const dateFmt = new Intl.DateTimeFormat(isAr ? "ar-EG" : "en-GB", {
     year: "numeric",
@@ -67,10 +69,45 @@ export default async function BlogIndex({
 
   const sorted = [...articles].sort((a, b) => b.date.localeCompare(a.date));
 
+  const blogLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: t("title"),
+    description: t("subtitle"),
+    url: localizedUrl(locale, PATH),
+    inLanguage: locale,
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    blogPost: sorted.map((a) => ({
+      "@type": "BlogPosting",
+      headline: isAr ? a.title.ar : a.title.en,
+      description: isAr ? a.excerpt.ar : a.excerpt.en,
+      url: localizedUrl(locale, `${PATH}/${a.slug}`),
+      datePublished: a.date,
+      image: `${SITE_URL}${a.cover}`,
+    })),
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: tn("home"), item: localizedUrl(locale) },
+      { "@type": "ListItem", position: 2, name: t("title"), item: localizedUrl(locale, PATH) },
+    ],
+  };
+
   return (
     <>
       <Navbar />
       <main>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+        />
         <PageHero title={t("title")} subtitle={t("subtitle")} />
 
         <section className="py-16 sm:py-24 bg-light">
@@ -91,12 +128,17 @@ export default async function BlogIndex({
                     />
                   </div>
                   <div className="flex flex-col flex-1 p-6">
-                    <time
-                      dateTime={article.date}
-                      className="text-xs text-text-muted mb-2"
-                    >
-                      {dateFmt.format(new Date(article.date))}
-                    </time>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="inline-block px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[11px] font-semibold">
+                        {isAr ? article.category.ar : article.category.en}
+                      </span>
+                      <time
+                        dateTime={article.date}
+                        className="text-xs text-text-muted"
+                      >
+                        {dateFmt.format(new Date(article.date))}
+                      </time>
+                    </div>
                     <h2 className="font-bold text-text-dark text-lg leading-snug mb-2">
                       {isAr ? article.title.ar : article.title.en}
                     </h2>

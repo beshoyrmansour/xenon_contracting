@@ -123,7 +123,7 @@ that captures research-stage traffic and internally links to Services.
 
 ## Implemented in the codebase
 
-- ✅ **Bilingual blog** (`/blog`, `/blog/[slug]`) with 3 starter articles on section 8 topics + BlogPosting schema.
+- ✅ **Bilingual blog** (`/blog`, `/blog/[slug]`) with 11 articles across 5 categories (Fire Alarm, Suppression, Standards & Compliance, Safety Guides, Buying Guide) + Blog/BlogPosting/Breadcrumb schema, category badges and same-category related links. Topics: addressable vs conventional, Egyptian Fire Code 305, FM200 vs CO2, AI/smart detection, 2026 Civil Defense requirements, lithium-battery safety, maintenance schedules, choosing a fire-fighting company, restaurant/kitchen safety, data-center protection, and hospital fire safety.
 - ✅ **City landing pages** (`/locations/cairo`, `/giza`, `/alexandria`) targeting "مكافحة حريق + city" + Service/areaServed schema.
 - ✅ **FAQ sections** with FAQPage schema on Home and Services (informational + transactional Q&A).
 - ✅ **Head term "مكافحة حريق"** woven into hero, section headings and meta across pages.

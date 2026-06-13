@@ -54,8 +54,9 @@ export const brandUrlMap: Record<string, string> = {
   Kidde: "https://www.kidde.com",
   Giacomini: "https://www.giacomini.com",
   Aurora: "https://www.pentair.com/en/product-category/aurora-pumps.html",
-  "Fairbanks Morse": "https://www.fairbanksnijhuis.com/products",
-  Patterson: "https://www.pattersonpumps.com/products.php",
+  "Fairbanks Morse":
+    "https://www.pentair.com/en-us/flow/commercial-products/fire-protection.html",
+  Patterson: "https://pattersonpumps.com/",
   Peerless: "https://www.peerlesspump.com/products",
   Watex: "https://www.watexsolutions.com",
   Hikvision: "https://www.hikvision.com/en/products",

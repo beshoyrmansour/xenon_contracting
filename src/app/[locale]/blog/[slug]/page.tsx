@@ -85,7 +85,14 @@ export default async function ArticlePage({
     day: "numeric",
   });
 
-  const related = articles.filter((a) => a.slug !== slug).slice(0, 2);
+  // Prefer articles in the same category, then fill with others.
+  const sameCategory = articles.filter(
+    (a) => a.slug !== slug && a.category.en === article.category.en,
+  );
+  const otherCategory = articles.filter(
+    (a) => a.slug !== slug && a.category.en !== article.category.en,
+  );
+  const related = [...sameCategory, ...otherCategory].slice(0, 3);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -96,6 +103,8 @@ export default async function ArticlePage({
     datePublished: article.date,
     dateModified: article.date,
     inLanguage: locale,
+    articleSection: isAr ? article.category.ar : article.category.en,
+    keywords: article.keywords.join(", "),
     mainEntityOfPage: localizedUrl(locale, `${PATH}/${slug}`),
     author: { "@id": `${SITE_URL}/#organization` },
     publisher: { "@id": `${SITE_URL}/#organization` },
@@ -144,9 +153,14 @@ export default async function ArticlePage({
               <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
               {t("backToBlog")}
             </Link>
-            <time dateTime={article.date} className="block text-sm text-secondary mb-3">
-              {dateFmt.format(new Date(article.date))}
-            </time>
+            <div className="flex items-center gap-3 mb-3">
+              <span className="inline-block px-3 py-1 rounded-full bg-primary/20 text-secondary text-xs font-semibold">
+                {isAr ? article.category.ar : article.category.en}
+              </span>
+              <time dateTime={article.date} className="text-sm text-secondary">
+                {dateFmt.format(new Date(article.date))}
+              </time>
+            </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
               {title}
             </h1>
