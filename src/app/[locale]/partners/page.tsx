@@ -71,6 +71,10 @@ const brands = [
   { name: "BUCKEYE", origin: "USA", spec: "Kitchen hood fire suppression" },
   { name: "NAFFCO", origin: "UAE", spec: "Firefighting & kitchen suppression" },
   { name: "Intercall", origin: "UK", spec: "Nurse call systems" },
+  { name: "C-TEC", origin: "UK", spec: "Fire alarm, evacuation & call systems" },
+  { name: "Thorn Security", origin: "UK", spec: "Fire detection systems" },
+  { name: "ASSS", origin: "Egypt", spec: "Firefighting equipment (Neverfire)" },
+  { name: "Cooper", origin: "USA/UK", spec: "Fire alarm & detection systems" },
 ];
 
 const whyBrands = [

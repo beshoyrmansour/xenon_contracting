@@ -34,7 +34,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.05 }}
             className="text-primary font-semibold text-sm tracking-widest uppercase mb-5"
           >
-            Fire Safety &bull; Security &bull; Electrical
+            {t("eyebrow")}
           </motion.p>
 
           {/* Headline */}

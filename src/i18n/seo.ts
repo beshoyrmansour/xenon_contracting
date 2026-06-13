@@ -1,6 +1,6 @@
 import { routing } from "./routing";
 
-export const SITE_URL = "https://www.xenon.com.eg";
+export const SITE_URL = "https://xenon.com.eg";
 export const SITE_NAME = "Xenon Trade & Contracting";
 export const SITE_NAME_AR = "شركة زينون للتجارة والمقاولات";
 

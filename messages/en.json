@@ -14,6 +14,7 @@
     "language": "عربي"
   },
   "hero": {
+    "eyebrow": "Fire Fighting • Security • Electrical",
     "slogan": "Your Trusted Partner in Fire Safety & Security Solutions",
     "headline": "Integrated Fire Safety & Security Solutions",
     "subheadline": "Protecting Egypt's businesses since 2012 — from design to installation to 24/7 support",
@@ -33,7 +34,7 @@
     "sprinkler": "Sprinkler Systems",
     "sprinklerDesc": "Automatic water firefighting and pump rooms",
     "gasSuppression": "Gas Suppression",
-    "gasSuppressionDesc": "FM200 and CO2 systems for sensitive areas",
+    "gasSuppressionDesc": "Fire suppression system using FM200 and CO2",
     "kitchenHood": "Kitchen Hood Suppression",
     "kitchenHoodDesc": "Automatic fire suppression for commercial kitchens",
     "cctv": "CCTV Surveillance",
@@ -247,22 +248,38 @@
   "whatsapp": {
     "message": "Hello, I'd like to inquire about your fire safety services."
   },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Common questions about fire fighting & security systems in Egypt",
+    "q1": "What fire safety services does Xenon provide in Egypt?",
+    "a1": "Xenon supplies, installs and maintains fire alarm systems, sprinklers, FM200/CO2 gas suppression, fire extinguishers, CCTV, access control and electrical contracting across Egypt.",
+    "q2": "What's the difference between addressable and conventional fire alarm systems?",
+    "a2": "A conventional system identifies the zone of a fire, while an addressable system pinpoints the exact device and location — making it ideal for larger facilities such as hospitals, malls and factories.",
+    "q3": "Are your fire fighting systems compliant with the Egyptian Fire Code and Civil Defense?",
+    "a3": "Yes. All our designs and installations follow the Egyptian Fire Code (Code 305), Civil Defense requirements and international standards such as NFPA and UL/FM.",
+    "q4": "When should I use an FM200 vs a CO2 suppression system?",
+    "a4": "FM200 is a clean agent ideal for occupied, sensitive areas such as server rooms, archives and control rooms, while CO2 suits unoccupied high-risk spaces. We assess each site and recommend the right system.",
+    "q5": "Do you maintain and refill fire extinguishers?",
+    "a5": "Yes — we service, pressure-test and refill all types of fire extinguishers, and offer scheduled maintenance contracts for complete fire systems.",
+    "q6": "Which areas in Egypt do you cover?",
+    "a6": "We serve Cairo, Giza, Alexandria and all governorates, including the New Administrative Capital, 6th of October and industrial zones."
+  },
   "pageMeta": {
     "home": {
       "title": "Xenon Trade & Contracting | Fire Safety & Security Systems — Egypt",
-      "description": "Integrated fire safety and security solutions in Egypt — fire alarm systems, sprinkler systems, gas suppression, CCTV, access control & electrical contracting. 14+ years, 150+ projects."
+      "description": "Integrated fire fighting and security solutions in Egypt — fire alarm systems, sprinklers, FM200 gas suppression, CCTV, access control & electrical contracting. 14+ years, 150+ projects, compliant with the Egyptian Fire Code & Civil Defense."
     },
     "about": {
       "title": "About Us — Fire Safety Experts Since 2012",
-      "description": "Learn about Xenon Trade & Contracting — Egypt's trusted fire safety and security company. 14+ years of experience, 150+ projects, certified by international standards. Founded by Eng. Mina Wagdy."
+      "description": "Learn about Xenon Trade & Contracting — a trusted fire fighting and security systems company in Egypt. 14+ years, 150+ projects, with systems compliant to the Egyptian Fire Code (305), Civil Defense requirements and international standards. Founded by Eng. Mina Wagdy."
     },
     "services": {
-      "title": "Our Services — Fire Safety, Security & Electrical Solutions",
-      "description": "Explore Xenon's 10 specialized services: fire alarm systems, sprinkler systems, gas suppression (FM200/CO2), CCTV surveillance, access control, electrical contracting, nurse call, kitchen hood suppression, and more."
+      "title": "Our Services — Fire Safety, Security & Electrical Solutions in Egypt",
+      "description": "Supply, installation & maintenance of fire safety systems in Egypt: fire alarm systems, sprinklers & valves, FM200/CO2 gas suppression, fire extinguishers & cylinders, CCTV, access control, electrical contracting and more."
     },
     "projects": {
       "title": "Our Projects — 150+ Fire Safety Projects Across Egypt",
-      "description": "View Xenon's portfolio of 150+ completed fire safety and security projects across Egypt — banking, healthcare, industrial, sports, education, and commercial sectors."
+      "description": "View Xenon's portfolio of 150+ completed fire fighting and security projects across Cairo, Giza and all of Egypt — banks, hospitals, factories, malls, hotels, sports and educational facilities."
     },
     "partners": {
       "title": "Our Partners & Brands — Authorized IBC Distributor",
@@ -270,10 +287,10 @@
     },
     "contact": {
       "title": "Contact Us — Free Fire Safety Consultation",
-      "description": "Contact Xenon Trade & Contracting for fire safety and security solutions. Call 01221715027 / 01501548315, email eng.mina@xenon.com.eg, or visit us in Gesr Elswis, Cairo. Free consultations available."
+      "description": "Contact Xenon for supply, installation & maintenance of fire fighting and security systems in Egypt. Call 01221715027 / 01501548315, email eng.mina@xenon.com.eg, or visit us in Gesr Elswis, Cairo. Free consultation & quote."
     }
   },
   "keywords": {
-    "list": "fire alarm Egypt|sprinkler system Cairo|CCTV installation Egypt|access control systems|FM200 gas suppression|CO2 fire suppression|Honeywell fire alarm Egypt|Hochiki Egypt|fire safety company Egypt|electrical contracting Cairo|nurse call system|kitchen hood suppression|intrusion alarm Egypt|public address system|IBC authorized distributor|NFPA Egypt"
+    "list": "fire fighting company Egypt|fire fighting systems Egypt|fire alarm system Egypt|addressable fire alarm system|conventional fire alarm system|fire alarm panel|fire detection company Cairo|fire alarm supply and installation|fire system maintenance Egypt|civil defense approved fire systems|Egyptian fire code 305|NFPA Egypt|fire extinguisher supplier Egypt|fire extinguisher refilling Cairo|fire extinguisher maintenance|fire hose reel|fire hose cabinet|landing valve|fire hydrant Egypt|sprinkler system Egypt|fire sprinkler installation Cairo|fire pump Egypt|fire network supply and installation|FM200 gas suppression|FM200 cylinder price Egypt|CO2 fire suppression|total flooding system|automatic fire suppression|kitchen hood suppression|low current systems Egypt|CCTV installation Egypt|CCTV cameras Cairo|access control systems Egypt|nurse call system|public address system|intrusion alarm Egypt|electrical contracting Cairo|electrical panels|fire safety company Egypt|fire protection systems Egypt|UL FM EN54 certified|Honeywell fire alarm Egypt|Hochiki Egypt|Apollo fire detection|IBC authorized distributor|fire alarm price Egypt"
   }
 }

@@ -3,17 +3,17 @@
 export const brandLogoMap: Record<string, string> = {
   Honeywell: "/brands/honeywell.svg",
   Hochiki: "/brands/hochikiamerica.png",
-  TYCO: "/brands/tyco.svg",
+  TYCO: "/brands/tyco.png",
   TOA: "/brands/toa.png",
   Farfisa: "/brands/farfisa.svg",
-  "Teletek Electronics": "/brands/teletek.svg",
+  "Teletek Electronics": "/brands/teletek.png",
   "JD-Media": "/brands/jdm.png",
   EiD: "/brands/eid.svg",
   Grundfos: "/brands/grundfos.svg",
   Apollo: "/brands/apollo.svg",
   Simplex: "/brands/simplex.avif",
   Kidde: "/brands/kidde.png",
-  Giacomini: "/brands/giacomini.svg",
+  Giacomini: "/brands/giacomini.png",
   Aurora: "/brands/aurora.svg",
   "iiD / iiD 2 Secure": "/brands/iid.svg",
   "Fire Products": "/brands/fire-products.svg",
@@ -33,6 +33,10 @@ export const brandLogoMap: Record<string, string> = {
   Hikvision: "/brands/hikvision.svg",
   SAMSUNG: "/brands/samsung.svg",
   Reliable: "/brands/reliablesprinkler.svg",
+  "C-TEC": "/brands/c-tec.png",
+  "Thorn Security": "/brands/thorn-security.png",
+  ASSS: "/brands/asss.png",
+  Cooper: "/brands/cooper.png",
 };
 
 // Official brand website (product listing where available). Brands without an
@@ -65,4 +69,9 @@ export const brandUrlMap: Record<string, string> = {
   Reliable: "https://www.reliablesprinkler.com/products",
   TEXECOM: "https://www.texe.com/",
   Intercall: "https://www.intercall.co.uk/products",
+  "C-TEC": "https://c-tec.com/product-category/",
+  "Thorn Security": "https://www.johnsoncontrols.com/fire-detection",
+  ASSS: "https://asss-eg.com/",
+  Cooper:
+    "https://www.eaton.com/gb/en-gb/products/safety-security-emergency-communications/fire-detection-systems.html",
 };

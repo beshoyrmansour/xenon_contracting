@@ -10,6 +10,7 @@ import FeaturedProjects from "@/components/home/FeaturedProjects";
 import ProcessSection from "@/components/home/ProcessSection";
 import BrandsCarousel from "@/components/home/BrandsCarousel";
 import SectorsGrid from "@/components/home/SectorsGrid";
+import FaqSection from "@/components/home/FaqSection";
 import CTABanner from "@/components/home/CTABanner";
 import { setRequestLocale } from "next-intl/server";
 
@@ -32,6 +33,7 @@ export default async function Home({
         <ProcessSection />
         <BrandsCarousel />
         <SectorsGrid />
+        <FaqSection />
         <CTABanner />
       </main>
       <Footer />

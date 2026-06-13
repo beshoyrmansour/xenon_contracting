@@ -8,16 +8,16 @@ import { FadeInUp } from "@/components/ScrollReveal";
 const brands: { name: string; logo?: string }[] = [
   { name: "Honeywell", logo: "/brands/honeywell.svg" },
   { name: "Hochiki", logo: "/brands/hochikiamerica.png" },
-  { name: "TYCO", logo: "/brands/tyco.svg" },
+  { name: "TYCO", logo: "/brands/tyco.png" },
   { name: "TOA", logo: "/brands/toa.png" },
   { name: "Farfisa", logo: "/brands/farfisa.svg" },
-  { name: "Teletek", logo: "/brands/teletek.svg" },
+  { name: "Teletek", logo: "/brands/teletek.png" },
   { name: "JD-Media", logo: "/brands/jdm.png" },
   { name: "Grundfos", logo: "/brands/grundfos.svg" },
   { name: "Apollo", logo: "/brands/apollo.svg" },
   { name: "Simplex", logo: "/brands/simplex.avif" },
   { name: "Kidde", logo: "/brands/kidde.png" },
-  { name: "Giacomini", logo: "/brands/giacomini.svg" },
+  { name: "Giacomini", logo: "/brands/giacomini.png" },
   { name: "Aurora", logo: "/brands/aurora.svg" },
   { name: "LPG", logo: "/brands/lpg.png" },
   { name: "HID Global", logo: "/brands/hid.png" },
@@ -31,6 +31,10 @@ const brands: { name: string; logo?: string }[] = [
   { name: "Reliable", logo: "/brands/reliablesprinkler.svg" },
   { name: "TEXECOM", logo: "/brands/texecom.png" },
   { name: "Intercall", logo: "/brands/intercall-logo.svg" },
+  { name: "C-TEC", logo: "/brands/c-tec.png" },
+  { name: "Thorn Security", logo: "/brands/thorn-security.png" },
+  { name: "ASSS", logo: "/brands/asss.png" },
+  { name: "Cooper", logo: "/brands/cooper.png" },
 ];
 
 export default function BrandsCarousel() {
@@ -42,7 +46,7 @@ export default function BrandsCarousel() {
         <FadeInUp className="text-center mb-10">
           <span className="section-label mb-4 inline-block">{t("title")}</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-dark mt-4 mb-4">
-            {t("title")}
+            {t("subtitle")}
           </h2>
           <span className="inline-block px-5 py-2 bg-primary/10 text-primary text-sm font-bold rounded-full">
             {t("ibcBadge")}
