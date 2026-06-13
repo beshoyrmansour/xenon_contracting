@@ -37,6 +37,11 @@ const brands: { name: string; logo?: string }[] = [
   { name: "Cooper", logo: "/brands/cooper.png" },
 ];
 
+// Split the brands across two marquee rows so the section reads as a compact
+// two-row grid in motion rather than one long strip.
+const midpoint = Math.ceil(brands.length / 2);
+const rows = [brands.slice(0, midpoint), brands.slice(midpoint)];
+
 export default function BrandsCarousel() {
   const t = useTranslations("brands");
 
@@ -54,10 +59,15 @@ export default function BrandsCarousel() {
         </FadeInUp>
       </div>
 
-      {/* Auto-scrolling carousel — full-bleed (edge to edge), forced LTR so the
-          marquee behaves the same in both reading directions. */}
-      <div className="relative overflow-hidden" dir="ltr">
-          <div className="flex w-max animate-scroll py-6 sm:py-8">
+      {/* Two auto-scrolling rows — full-bleed (edge to edge), forced LTR so the
+          marquee behaves the same in both reading directions. The second row
+          scrolls the opposite way for visual interest. */}
+      <div className="relative overflow-hidden flex flex-col gap-4 sm:gap-8" dir="ltr">
+        {rows.map((rowBrands, rowIdx) => (
+          <div
+            key={rowIdx}
+            className={`flex w-max ${rowIdx === 0 ? "animate-scroll" : "animate-scroll-reverse"}`}
+          >
             {/* Two identical copies tile seamlessly: the track is animated
                 from 0 to -50%, which is exactly one copy's width. */}
             {[0, 1].map((copy) => (
@@ -66,12 +76,12 @@ export default function BrandsCarousel() {
                 aria-hidden={copy === 1}
                 className="flex flex-shrink-0 gap-4 sm:gap-8 pe-4 sm:pe-8"
               >
-                {brands.map((brand, idx) => (
+                {rowBrands.map((brand, idx) => (
                   <div
                     key={idx}
                     tabIndex={copy === 0 ? 0 : -1}
                     aria-label={brand.name}
-                    className="group relative overflow-hidden flex-shrink-0 flex items-start justify-center w-[150px] sm:w-[180px] h-[80px] sm:h-[96px] bg-light rounded-xl px-3 sm:px-4 pt-3 sm:pt-4 grayscale hover:grayscale-0 focus:grayscale-0 transition-all duration-300 hover:shadow-md border border-transparent hover:border-primary/10 focus:outline-none focus:border-primary/30 focus:ring-2 focus:ring-primary/30"
+                    className="group relative overflow-hidden flex-shrink-0 flex items-start justify-center w-[150px] sm:w-[180px] h-[80px] sm:h-[96px] rounded-xl px-3 sm:px-4 pt-3 sm:pt-4 transition-all duration-300 bg-transparent hover:bg-light focus:bg-light hover:shadow-md border border-transparent hover:border-primary/10 focus:outline-none focus:border-primary/30 focus:ring-2 focus:ring-primary/30"
                   >
                     {brand.logo ? (
                       <Image
@@ -97,7 +107,8 @@ export default function BrandsCarousel() {
               </div>
             ))}
           </div>
-        </div>
+        ))}
+      </div>
 
       <style jsx>{`
         @keyframes scroll {
@@ -108,14 +119,31 @@ export default function BrandsCarousel() {
             transform: translateX(-50%);
           }
         }
+        @keyframes scroll-reverse {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
         .animate-scroll {
           animation: scroll 30s linear infinite;
           width: max-content;
         }
-        .animate-scroll:hover {
+        .animate-scroll-reverse {
+          animation: scroll-reverse 30s linear infinite;
+          width: max-content;
+        }
+        /* Pause both rows when hovering anywhere over the carousel. */
+        .relative:hover .animate-scroll,
+        .relative:hover .animate-scroll-reverse {
           animation-play-state: paused;
         }
         [dir="rtl"] .animate-scroll {
+          animation-direction: reverse;
+        }
+        [dir="rtl"] .animate-scroll-reverse {
           animation-direction: reverse;
         }
       `}</style>

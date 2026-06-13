@@ -30,7 +30,7 @@ export const articles: Article[] = [
   {
     slug: "choosing-fire-fighting-company-egypt",
     date: "2026-06-13",
-    cover: "/blog/choosing-fire-fighting-company-egypt.png",
+    cover: "/blog/fire-safety-engineer-inspecting-panel-egypt.png",
     category: { en: "Buying Guide", ar: "دليل الشراء" },
     title: {
       en: "How to Choose a Fire Fighting Company in Egypt",
@@ -100,7 +100,7 @@ export const articles: Article[] = [
   {
     slug: "restaurant-kitchen-fire-safety",
     date: "2026-06-11",
-    cover: "/blog/restaurant-kitchen-fire-safety.png",
+    cover: "/blog/commercial-kitchen-hood-fire-suppression.png",
     category: { en: "Safety Guides", ar: "أدلة السلامة" },
     title: {
       en: "Fire Safety for Restaurants & Commercial Kitchens in Egypt",
@@ -161,7 +161,7 @@ export const articles: Article[] = [
   {
     slug: "data-center-server-room-fire-protection",
     date: "2026-06-09",
-    cover: "/blog/data-center-server-room-fire-protection.png",
+    cover: "/blog/data-center-fm200-fire-suppression.png",
     category: { en: "Suppression", ar: "أنظمة الإطفاء" },
     title: {
       en: "Data Center & Server Room Fire Protection in Egypt",
@@ -222,7 +222,7 @@ export const articles: Article[] = [
   {
     slug: "hospital-fire-safety",
     date: "2026-06-07",
-    cover: "/blog/hospital-fire-safety.png",
+    cover: "/blog/hospital-corridor-fire-safety-egypt.png",
     category: { en: "Safety Guides", ar: "أدلة السلامة" },
     title: {
       en: "Fire Safety in Hospitals: Detection, Suppression & Nurse Call",
@@ -283,7 +283,7 @@ export const articles: Article[] = [
   {
     slug: "fire-system-maintenance-guide",
     date: "2026-06-12",
-    cover: "/blog/fire-system-maintenance-guide.png",
+    cover: "/blog/fire-extinguisher-maintenance-inspection.png",
     category: { en: "Safety Guides", ar: "أدلة السلامة" },
     title: {
       en: "Fire System Maintenance in Egypt: How Often & What's Checked",
@@ -347,7 +347,7 @@ export const articles: Article[] = [
   {
     slug: "civil-defense-requirements-shops-2026",
     date: "2026-06-10",
-    cover: "/blog/civil-defense-requirements-shops-2026.png",
+    cover: "/blog/retail-shop-fire-safety-civil-defense.png",
     category: { en: "Standards & Compliance", ar: "المعايير والاعتماد" },
     title: {
       en: "Civil Defense Requirements for Commercial Shops in Egypt (2026)",
@@ -414,7 +414,7 @@ export const articles: Article[] = [
   {
     slug: "lithium-battery-fire-safety",
     date: "2026-06-08",
-    cover: "/blog/lithium-battery-fire-safety.png",
+    cover: "/blog/warehouse-lithium-battery-fire-safety.png",
     category: { en: "Safety Guides", ar: "أدلة السلامة" },
     title: {
       en: "Lithium-Ion Battery Fire Safety for Warehouses & Facilities",
@@ -481,7 +481,7 @@ export const articles: Article[] = [
   {
     slug: "ai-smart-fire-detection-egypt",
     date: "2026-06-06",
-    cover: "/blog/ai-smart-fire-detection-egypt.png",
+    cover: "/blog/ai-cctv-fire-detection-control-room.png",
     category: { en: "Fire Alarm", ar: "إنذار الحريق" },
     title: {
       en: "Smart & AI Fire Detection: What It Means for Buildings in Egypt",
@@ -545,7 +545,7 @@ export const articles: Article[] = [
   {
     slug: "fm200-vs-co2-suppression",
     date: "2026-06-05",
-    cover: "/blog/fm200-vs-co2-suppression.png",
+    cover: "/blog/fm200-co2-suppression-cylinders.png",
     category: { en: "Suppression", ar: "أنظمة الإطفاء" },
     title: {
       en: "FM200 vs CO2 Gas Suppression: Choosing the Right Clean Agent",
@@ -612,7 +612,7 @@ export const articles: Article[] = [
   {
     slug: "egyptian-fire-code-305",
     date: "2026-05-28",
-    cover: "/blog/egyptian-fire-code-305.png",
+    cover: "/blog/egyptian-fire-code-305-standards.png",
     category: { en: "Standards & Compliance", ar: "المعايير والاعتماد" },
     title: {
       en: "The Egyptian Fire Code (Code 305) & Civil Defense Requirements Explained",
@@ -676,7 +676,7 @@ export const articles: Article[] = [
   {
     slug: "addressable-vs-conventional-fire-alarm",
     date: "2026-05-20",
-    cover: "/blog/addressable-vs-conventional-fire-alarm.png",
+    cover: "/blog/fire-alarm-control-panel-egypt.png",
     category: { en: "Fire Alarm", ar: "إنذار الحريق" },
     title: {
       en: "Addressable vs Conventional Fire Alarm Systems: Which Do You Need?",
