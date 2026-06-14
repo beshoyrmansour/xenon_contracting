@@ -14,6 +14,7 @@ import {
 import Image from "next/image";
 import { Award, ShieldCheck, Globe, BadgeCheck, ExternalLink } from "lucide-react";
 import { brandLogoMap, brandUrlMap } from "@/data/brands";
+import BrandsOrbit from "@/components/partners/BrandsOrbit";
 
 // Flat, uncategorized brand list. Brands that previously spanned multiple
 // categories are listed once with their specs merged.
@@ -111,9 +112,43 @@ export default function PartnersPage() {
           </div>
         </section>
 
+        {/* Orbital showcase — Xenon at the center, partners orbiting around */}
+        <section className="relative py-12 sm:py-20 bg-dark overflow-hidden">
+          {/* Nebula accents */}
+          <div
+            className="absolute inset-0 opacity-60"
+            aria-hidden="true"
+            style={{
+              backgroundImage: `radial-gradient(circle at 18% 30%, rgba(178,34,34,0.18) 0%, transparent 45%),
+                               radial-gradient(circle at 82% 75%, rgba(218,165,32,0.16) 0%, transparent 45%)`,
+            }}
+          />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FadeInUp className="text-center mb-8 sm:mb-12">
+              <span className="section-label section-label-light mb-4 inline-block">
+                {t("ecosystemLabel")}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mt-4 mb-4">
+                {t("ecosystemTitle")}
+              </h2>
+              <p className="text-gray-300 leading-relaxed max-w-2xl mx-auto">
+                {t("ecosystemSubtitle")}
+              </p>
+            </FadeInUp>
+            <FadeInUp delay={0.1}>
+              <BrandsOrbit brands={brands} />
+            </FadeInUp>
+          </div>
+        </section>
+
         {/* All Brands */}
         <section className="py-12 sm:py-20 bg-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FadeInUp className="text-center mb-10">
+              <h2 className="text-2xl sm:text-3xl font-bold text-text-dark">
+                {t("directoryTitle")}
+              </h2>
+            </FadeInUp>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {brands.map((brand) => {
                 const href = brandUrlMap[brand.name];
